@@ -21,27 +21,24 @@ public class PaymentMethodController {
 
 	@Autowired
 	private IPaymentMethodRepo repo;
-	
-
 
 	@GetMapping
-	public List<PaymentMethod> listar() throws Exception{
+	public List<PaymentMethod> listar() throws Exception {
 		return repo.findAll();
 	}
-	
+
 	@PostMapping
 	public PaymentMethod registrar(@RequestBody PaymentMethod m) throws Exception {
 		return repo.save(m);
 	}
-	
+
 	@PutMapping
 	public PaymentMethod modificar(@RequestBody PaymentMethod m) throws Exception {
 		return repo.save(m);
 	}
-	
-	 
+
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer id) throws Exception{
+	public void eliminar(@PathVariable("id") Integer id) throws Exception {
 		repo.deleteById(id);
 	}
 }

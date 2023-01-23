@@ -20,31 +20,31 @@ import com.supermercado.service.CategoryService;
 @RequestMapping("/Category")
 public class CategoryController {
 
-    @Autowired
-    private CategoryService service;
+	@Autowired
+	private CategoryService service;
 
-    @GetMapping
-    public List<Category> list() throws Exception{
-        return service.list();
-    }
+	@GetMapping
+	public List<Category> list() throws Exception {
+		return service.list();
+	}
 
-    @GetMapping("/cantidadPorId")
-    public List<CategoryDTO> listProductsCountByCategory() throws Exception{
-        return service.listProductsCountByCategory();
-    }
+	@GetMapping("/cantidadPorId")
+	public List<CategoryDTO> listProductsCountByCategory() throws Exception {
+		return service.listProductsCountByCategory();
+	}
 
-    @PostMapping
-    public Category register(@RequestBody Category p) throws Exception {
-        return service.register(p);
-    }
+	@PostMapping
+	public Category register(@RequestBody Category p) throws Exception {
+		return service.register(p);
+	}
 
-    @PutMapping
-    public Category modify(@RequestBody Category p) throws Exception {
-        return service.modify(p);
-    }
+	@PutMapping
+	public Category modify(@RequestBody Category p) throws Exception {
+		return service.modify(p);
+	}
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Integer id) throws Exception{
-        service.delete(id);
-    }
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable("id") Integer id) throws Exception {
+		service.delete(id);
+	}
 }

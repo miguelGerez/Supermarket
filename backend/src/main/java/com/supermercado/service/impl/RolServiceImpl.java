@@ -10,19 +10,16 @@ import com.supermercado.model.Role;
 import com.supermercado.repo.IRolRepo;
 import com.supermercado.service.IRolService;
 
-
 @Service
 public class RolServiceImpl implements IRolService {
 
 	@Autowired
 	private IRolRepo repo;
-	
-	
+
 	@Override
 	public Role registrar(Role p) throws Exception {
 		return repo.save(p);
 	}
-	
 
 	@Override
 	public Role modificar(Role p) throws Exception {
@@ -36,7 +33,7 @@ public class RolServiceImpl implements IRolService {
 
 	@Override
 	public Role ListarPorId(Integer id) throws Exception {
-		
+
 		Optional<Role> op = repo.findById(id);
 		return op.isPresent() ? op.get() : new Role();
 	}
@@ -45,7 +42,6 @@ public class RolServiceImpl implements IRolService {
 	public void eliminar(Integer id) throws Exception {
 		repo.deleteById(id);
 	}
-
 
 	@Override
 	public List<Role> listarSinProgramador() throws Exception {

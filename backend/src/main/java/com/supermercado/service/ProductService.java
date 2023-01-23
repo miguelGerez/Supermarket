@@ -4,32 +4,32 @@ import java.util.List;
 
 import com.supermercado.model.Product;
 
-public interface ProductService  {
+public interface ProductService {
 
-		Product register(Product p) throws Exception;
+	Product register(Product p) throws Exception;
 
-		Product modify(Product p) throws Exception;
+	Product modify(Product p) throws Exception;
 
-		Product listById(Integer id) throws Exception;
-		
-		Product listByBarCode(String string) throws Exception;
-		
-		List<Product> list() throws Exception;
+	Product listById(Integer id) throws Exception;
 
-		List<Product> listByCategoryAndBrand(Integer idBrand, Integer idCategory);
+	Product listByBarCode(String string) throws Exception;
 
-		List<Product> listByCategory(Integer id);
+	List<Product> list() throws Exception;
 
-		List<Product> listByBrand(Integer id);
+	List<Product> listByCategoryAndBrand(Integer idBrand, Integer idCategory);
 
-		List<Product> listByQuickAccess();
+	List<Product> listByCategory(Integer id);
 
-		List<Product> listByNoPrice();
-		
-		List<Product> listByProvider(Integer id);
-		
-		List<Product> listByAutoComplete(String string) throws Exception;
+	List<Product> listByBrand(Integer id);
 
-		void delete(Integer id) throws Exception;
+	List<Product> listByQuickAccess();
+
+	List<Product> listByNoPrice();
+
+	List<Product> listByProvider(Integer id);
+
+	List<Product> listByAutoComplete(String string) throws Exception;
+
+	void delete(Integer id) throws Exception;
 
 }

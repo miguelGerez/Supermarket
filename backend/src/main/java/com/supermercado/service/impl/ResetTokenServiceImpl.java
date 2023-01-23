@@ -12,7 +12,7 @@ public class ResetTokenServiceImpl implements IResetTokenService {
 
 	@Autowired
 	private IResetTokenRepo repo;
-	
+
 	@Override
 	public ResetToken findByToken(String token) {
 		return repo.findByToken(token);

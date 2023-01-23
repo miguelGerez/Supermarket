@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 //Tercera Clase
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServer extends AuthorizationServerConfigurerAdapter{
+public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
 	@Value("${security.jwt.client-id}")
 	private String clientId;
@@ -37,7 +37,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter{
 
 	@Value("${security.jwt.resource-ids}")
 	private String resourceIds;
-	
+
 	@Autowired
 	private TokenStore tokenStore;
 
@@ -45,23 +45,24 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter{
 	private JwtAccessTokenConverter accessTokenConverter;
 
 	@Autowired
-	private AuthenticationManager authenticationManager;	
-	
+	private AuthenticationManager authenticationManager;
+
 	@Autowired
-	private BCryptPasswordEncoder bcrypt;	
-	
+	private BCryptPasswordEncoder bcrypt;
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
-		configurer.inMemory().withClient(clientId).secret(bcrypt.encode(clientSecret)).authorizedGrantTypes(grantType, "refresh_token")
-		.scopes(scopeRead, scopeWrite).resourceIds(resourceIds)
-		.refreshTokenValiditySeconds(0);
+		configurer.inMemory().withClient(clientId).secret(bcrypt.encode(clientSecret))
+				.authorizedGrantTypes(grantType, "refresh_token").scopes(scopeRead, scopeWrite).resourceIds(resourceIds)
+				.refreshTokenValiditySeconds(0);
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
 		enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
-		endpoints.tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain).authenticationManager(authenticationManager);
+		endpoints.tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain)
+				.authenticationManager(authenticationManager);
 	}
 
 }

@@ -15,8 +15,7 @@ public class ProviderServiceImpl implements ProviderService {
 
 	@Autowired
 	private IProviderRepo repo;
-	
-	
+
 	@Override
 	public Provider register(Provider p) throws Exception {
 		return repo.save(p);
@@ -26,17 +25,15 @@ public class ProviderServiceImpl implements ProviderService {
 	public Provider modify(Provider p) throws Exception {
 		return repo.save(p);
 	}
-	
 
 	@Override
 	public List<Provider> list() throws Exception {
 		return repo.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
-	
 
 	@Override
 	public void delete(Integer id) throws Exception {
-		repo.deleteById(id);	
+		repo.deleteById(id);
 	}
 
 }

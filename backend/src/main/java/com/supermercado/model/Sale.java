@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table
 public class Sale {
@@ -22,20 +20,20 @@ public class Sale {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private LocalDateTime date;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "payment_method_id")
 	private PaymentMethod paymentMethod;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "sell_id")
-    private List<SaleDetail> sellDetail;
+	@JoinColumn(name = "sell_id")
+	private List<SaleDetail> sellDetail;
 
 	public Integer getId() {
 		return id;
@@ -76,5 +74,5 @@ public class Sale {
 	public void setSellDetail(List<SaleDetail> sellDetail) {
 		this.sellDetail = sellDetail;
 	}
-	
+
 }

@@ -22,8 +22,8 @@ public class FileServiceImpl implements IFileService {
 	}
 
 	@Override
-	public byte[] leerArchivo(Integer idArchivo) {		
-		Optional<File> op = repo.findById(idArchivo);		
+	public byte[] leerArchivo(Integer idArchivo) {
+		Optional<File> op = repo.findById(idArchivo);
 		return op.isPresent() ? op.get().getValue() : new byte[0];
 	}
 

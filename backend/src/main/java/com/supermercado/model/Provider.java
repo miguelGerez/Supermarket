@@ -1,8 +1,5 @@
 package com.supermercado.model;
 
-
-
-
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -17,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }) })
 public class Provider {
 
 	@Id
@@ -25,7 +22,7 @@ public class Provider {
 	private Integer id;
 
 	private String name;
-	
+
 	@JsonIgnore
 	@ManyToMany(mappedBy = "providers")
 	private Set<Product> product;

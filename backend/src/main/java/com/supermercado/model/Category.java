@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }) })
 public class Category {
 
 	@Id
@@ -32,5 +32,5 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

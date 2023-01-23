@@ -13,9 +13,8 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name" }) })
 public class Brand {
 
 	@Id
@@ -23,11 +22,11 @@ public class Brand {
 	private Integer id;
 
 	private String name;
-	
+
 	@JsonIgnore
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Product> product;
-    
+	@OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Product> product;
+
 	public Integer getId() {
 		return id;
 	}
@@ -52,5 +51,4 @@ public class Brand {
 		this.product = product;
 	}
 
-	
 }

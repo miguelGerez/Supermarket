@@ -21,36 +21,34 @@ public class RolController {
 
 	@Autowired
 	private IRolService service;
-	
+
 	@GetMapping
-	public List<Role> listar() throws Exception{
+	public List<Role> listar() throws Exception {
 		return service.listar();
 	}
-	
+
 	@GetMapping("/listarSinProgramador")
-	public List<Role> listarSinProgramador() throws Exception{
+	public List<Role> listarSinProgramador() throws Exception {
 		return service.listarSinProgramador();
 	}
-	
+
 	@GetMapping("/{id}")
-	public Role ListarPorId(@PathVariable("id") Integer id) throws Exception{
+	public Role ListarPorId(@PathVariable("id") Integer id) throws Exception {
 		return service.ListarPorId(id);
 	}
-	
-	
+
 	@PostMapping
 	public Role registrar(@RequestBody Role p) throws Exception {
 		return service.registrar(p);
 	}
-	
+
 	@PutMapping
 	public Role modificar(@RequestBody Role p) throws Exception {
 		return service.modificar(p);
 	}
-	
-	 
+
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer id) throws Exception{
+	public void eliminar(@PathVariable("id") Integer id) throws Exception {
 		service.eliminar(id);
 	}
 }

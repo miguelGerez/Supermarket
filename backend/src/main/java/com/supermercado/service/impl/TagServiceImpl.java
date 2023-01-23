@@ -20,48 +20,48 @@ public class TagServiceImpl implements TagService {
 
 	@Override
 	public Tag register(Tag p) throws Exception {
-	    return repo.save(p);
+		return repo.save(p);
 	}
 
 	@Override
 	public Tag modify(Tag p) throws Exception {
-	    p.setDate(LocalDateTime.now());
-	    return repo.save(p);
+		p.setDate(LocalDateTime.now());
+		return repo.save(p);
 	}
 
 	@Override
 	public List<Tag> list() throws Exception {
-	    return repo.findAll();
+		return repo.findAll();
 	}
 
 	@Override
 	public void delete(Integer id) throws Exception {
-	    repo.deleteById(id);
+		repo.deleteById(id);
 	}
 
 	@Override
 	public Tag listUnprintedTags() throws Exception {
-	    return repo.listUnprintedTags();
+		return repo.listUnprintedTags();
 	}
 
 	@Override
 	public List<Tag> listPrintedTags() throws Exception {
-	    return repo.listPrintedTags();
-	} 
+		return repo.listPrintedTags();
+	}
 
 	@Override
 	public Tag productToTag(Product p) throws Exception {
-	    Tag tag = repo.listUnprintedTags();
-	    List<Product> products = new ArrayList<Product>();
+		Tag tag = repo.listUnprintedTags();
+		List<Product> products = new ArrayList<Product>();
 
-	    if (tag == null) {
-	        tag = new Tag();
-	    } else {
-	        products = tag.getProducts();
-	    }
-	    products.add(p);
-	    tag.setProducts(products);
-	    return repo.save(tag);
+		if (tag == null) {
+			tag = new Tag();
+		} else {
+			products = tag.getProducts();
+		}
+		products.add(p);
+		tag.setProducts(products);
+		return repo.save(tag);
 	}
 
 }

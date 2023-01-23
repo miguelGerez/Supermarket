@@ -9,7 +9,6 @@ public class AnnualSaleDTO {
 	public AnnualSaleDTO() {
 
 	}
-	
 
 	public AnnualSaleDTO(Integer id, String mes, Integer cantidad, Integer total) {
 		super();
@@ -18,18 +17,13 @@ public class AnnualSaleDTO {
 		this.total = total;
 	}
 
-
-
-
 	public String getMes() {
 		return mes;
 	}
 
-
 	public void setMes(String mes) {
 		this.mes = mes;
 	}
-
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -39,18 +33,12 @@ public class AnnualSaleDTO {
 		this.cantidad = cantidad;
 	}
 
-
 	public Integer getTotal() {
 		return total;
 	}
 
-
 	public void setTotal(Integer total) {
 		this.total = total;
 	}
-
-	
-
-	
 
 }

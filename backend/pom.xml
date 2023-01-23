@@ -9,10 +9,10 @@
 		<version>2.4.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.super</groupId>
-	<artifactId>super-backend</artifactId>
+	<groupId>com.supermercado</groupId>
+	<artifactId>supermercado</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>super-backend</name>
+	<name>supermercado</name>
 	<description>Potty</description>
 	<packaging>war</packaging>
 

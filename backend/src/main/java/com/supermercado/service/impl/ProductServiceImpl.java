@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private IProductRepo repo;
-	
+
 	@Override
 	public Product register(Product p) throws Exception {
 		return repo.save(p);
@@ -25,20 +25,18 @@ public class ProductServiceImpl implements ProductService {
 	public Product modify(Product p) throws Exception {
 		return repo.save(p);
 	}
-	
 
 	@Override
 	public List<Product> list() throws Exception {
 		return repo.findAll();
 	}
-	
 
 	@Override
 	public Product listById(Integer id) throws Exception {
 		Optional<Product> op = repo.findById(id);
 		return op.isPresent() ? op.get() : new Product();
 	}
-	
+
 	@Override
 	public void delete(Integer id) throws Exception {
 		repo.deleteById(id);
@@ -83,6 +81,5 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> listByAutoComplete(String string) throws Exception {
 		return repo.listByAutoComplete(string);
 	}
-	
-	
+
 }

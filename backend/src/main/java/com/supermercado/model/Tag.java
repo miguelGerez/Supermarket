@@ -10,18 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Tag {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-    
+
 	private LocalDateTime date;
-	
+
 	private Boolean printed;
-	
+
 	@OneToMany()
 	@JoinColumn(name = "tag_id")
 	private List<Product> products;
@@ -58,5 +57,4 @@ public class Tag {
 		this.products = products;
 	}
 
-	
 }

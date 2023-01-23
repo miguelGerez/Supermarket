@@ -18,19 +18,19 @@ import com.supermercado.service.IMenuService;
 @RestController
 @RequestMapping("/menus")
 public class MenuController {
-	
+
 	@Autowired
 	private IMenuService service;
-	
+
 	@GetMapping
-	public ResponseEntity<List<Menu>> listar() throws Exception{
+	public ResponseEntity<List<Menu>> listar() throws Exception {
 		List<Menu> menus = new ArrayList<>();
 		menus = service.listar();
 		return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/user")
-	public ResponseEntity<List<Menu>> listar(@RequestBody String nombre) throws Exception{
+	public ResponseEntity<List<Menu>> listar(@RequestBody String nombre) throws Exception {
 		List<Menu> menus = new ArrayList<>();
 		menus = service.listMenusByUser(nombre);
 		System.out.println(nombre);

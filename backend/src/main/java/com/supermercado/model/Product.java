@@ -19,52 +19,47 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private String name;
-	
+
 	private BigDecimal purchasePrice;
-	
+
 	private BigDecimal salePrice;
-	
+
 	private String descripcion;
-	
+
 	private String bard_code;
-			
+
 	private BigDecimal profit;
-	
+
 	private String netContent;
-	
-	private Integer stock;
-	
+
 	private Boolean quickAccess;
-	
+
 	private LocalDateTime priceUptime;
-	
+
 	private LocalDateTime modifyUptime;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
-	
+
 	@ManyToOne()
 	@JoinColumn(name = "payment_method_id")
 	private PaymentMethod paymentMethod;
-	 
+
 	@ManyToOne
-    @JoinColumn(name = "category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	@ManyToOne
-    @JoinColumn(name = "classification_id")
+	@JoinColumn(name = "classification_id")
 	private Classification classification;
-	
+
 	@ManyToMany
-    @JoinTable(
-            name = "producto_proovedor",
-            joinColumns = {@JoinColumn(name = "id_producto")},
-            inverseJoinColumns = {@JoinColumn(name = "id_proovedor")}
-    )
-    
+	@JoinTable(name = "producto_proovedor", joinColumns = { @JoinColumn(name = "id_producto") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_proovedor") })
+
 	private Set<Provider> providers;
 
 	public Integer getId() {
@@ -131,14 +126,6 @@ public class Product {
 		this.netContent = netContent;
 	}
 
-	public Integer getStock() {
-		return stock;
-	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
-
 	public Boolean getQuickAccess() {
 		return quickAccess;
 	}
@@ -202,5 +189,5 @@ public class Product {
 	public void setProviders(Set<Provider> providers) {
 		this.providers = providers;
 	}
-	
+
 }

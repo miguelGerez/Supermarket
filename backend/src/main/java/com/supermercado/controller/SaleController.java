@@ -30,23 +30,23 @@ public class SaleController {
 	private ISaleRepo repo;
 
 	@GetMapping
-	public List<Sale> list() throws Exception{
+	public List<Sale> list() throws Exception {
 		return service.list();
 	}
 
 	@GetMapping("/{id}")
-	public Sale findById(@PathVariable("id") Integer id) throws Exception{
+	public Sale findById(@PathVariable("id") Integer id) throws Exception {
 		return repo.getOne(id);
 	}
 
 	@GetMapping("/quantity")
-	public Long getQuantity() throws Exception{
+	public Long getQuantity() throws Exception {
 		return repo.count();
 	}
 
-
 	@GetMapping("/listByDate/{date}")
-	public List<Sale> listByDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) throws Exception {
+	public List<Sale> listByDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date)
+			throws Exception {
 		return service.listSalesByDate(date);
 	}
 
@@ -65,9 +65,8 @@ public class SaleController {
 		return service.modify(p);
 	}
 
-	 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable("id") Integer id) throws Exception{
+	public void delete(@PathVariable("id") Integer id) throws Exception {
 		service.delete(id);
 	}
 }

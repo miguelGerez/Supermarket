@@ -8,7 +8,7 @@ import com.supermercado.service.ICRUD;
 public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID> {
 
 	protected abstract IGenericRepo<T, ID> getRepo();
-	
+
 	@Override
 	public T registrar(T t) throws Exception {
 		return getRepo().save(t);
@@ -20,7 +20,7 @@ public abstract class CRUDImpl<T, ID> implements ICRUD<T, ID> {
 	}
 
 	@Override
-	public List<T> listar() throws Exception {		
+	public List<T> listar() throws Exception {
 		return getRepo().findAll();
 	}
 

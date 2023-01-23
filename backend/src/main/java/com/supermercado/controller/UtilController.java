@@ -20,33 +20,32 @@ public class UtilController {
 
 	@Autowired
 	private LocaleResolver localeResolver;
-	
+
 	@Autowired
 	private HttpServletRequest httpServletRequest;
-	
+
 	@Autowired
 	private HttpServletResponse httpServletResponse;
-	
-	
-	//Ejemplo de cambiar idioma
+
+	// Ejemplo de cambiar idioma
 	@GetMapping("/locale/{loc}")
-	public ResponseEntity<Void> changeLocale(@PathVariable("loc") String loc){		
+	public ResponseEntity<Void> changeLocale(@PathVariable("loc") String loc) {
 		Locale userLocale = null;
-		
+
 		switch (loc) {
 		case "en":
 			userLocale = Locale.ENGLISH;
 			break;
-		case "fr":			
+		case "fr":
 			userLocale = Locale.FRENCH;
 			break;
 		default:
 			userLocale = Locale.ROOT;
 			break;
 		}
-		
-	    localeResolver.setLocale(httpServletRequest, httpServletResponse, userLocale);	
+
+		localeResolver.setLocale(httpServletRequest, httpServletResponse, userLocale);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	
+
 }

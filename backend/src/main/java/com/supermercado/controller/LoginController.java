@@ -28,43 +28,43 @@ public class LoginController {
 
 	@Autowired
 	private ILoginService service;
-	
-	@Autowired	
+
+	@Autowired
 	private IResetTokenService tokenService;
-	
+
 	@Autowired
 	private EmailUtil emailUtil;
-	
+
 	@PostMapping(value = "/enviarCorreo", consumes = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<Integer> enviarCorreo(@RequestBody String correo) throws Exception {
 		int rpta = 0;
-		
+
 		User us = service.checkUsername(correo);
-		if(us != null && us.getId() > 0) {
+		if (us != null && us.getId() > 0) {
 			ResetToken token = new ResetToken();
 			token.setToken(UUID.randomUUID().toString());
 			token.setUser(us);
 			token.setExpiracion(10);
 			tokenService.guardar(token);
-			
+
 			Mail mail = new Mail();
 			mail.setFrom("email.prueba.demo@gmail.com");
 			mail.setTo(us.getUsername());
 			mail.setSubject("RESTABLECER CONTRASEÑA  MEDIAPP");
-			
+
 			Map<String, Object> model = new HashMap<>();
 			String url = "http://localhost:4200/recuperar/" + token.getToken();
 			model.put("user", token.getUser().getUsername());
 			model.put("resetUrl", url);
 			mail.setModel(model);
-			
+
 			emailUtil.enviarMail(mail);
-			
-			rpta = 1;			
+
+			rpta = 1;
 		}
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/restablecer/verificar/{token}")
 	public ResponseEntity<Integer> verificarToken(@PathVariable("token") String token) {
 		int rpta = 0;
@@ -82,11 +82,11 @@ public class LoginController {
 		}
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
-	
+
 	@PostMapping(value = "/restablecer/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Object> restablecerClave(@PathVariable("token") String token, @RequestBody String clave) {		
+	public ResponseEntity<Object> restablecerClave(@PathVariable("token") String token, @RequestBody String clave) {
 		try {
-			ResetToken rt = tokenService.findByToken(token);			
+			ResetToken rt = tokenService.findByToken(token);
 			service.changePassword(clave, rt.getUser().getUsername());
 			tokenService.eliminar(rt);
 		} catch (Exception e) {
@@ -94,5 +94,5 @@ public class LoginController {
 		}
 		return new ResponseEntity<Object>(HttpStatus.OK);
 	}
-	
+
 }

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "user")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 public class User {
 
 	@Id
@@ -25,27 +25,27 @@ public class User {
 
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
 
-	@Column(name = "clave", nullable = false)
+	@Column(name = "password", nullable = false)
 	private String password;
 
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
-	
+
 	private String email;
-	
+
 	private String address;
-	
+
 	private Integer height;
-	
+
 	private String phone;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_role", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<Role> roles;
 
 	public Integer getId() {
@@ -135,5 +135,5 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 }

@@ -30,5 +30,4 @@ public class Classification {
 		this.name = name;
 	}
 
-	
 }

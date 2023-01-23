@@ -4,7 +4,7 @@ import com.supermercado.model.User;
 
 public interface ILoginService {
 
-	User checkUsername(String user);
-	
-	void changePassword(String clave, String nombre);
+	User checkUsername(String username);
+
+	void changePassword(String passowrd, String username);
 }

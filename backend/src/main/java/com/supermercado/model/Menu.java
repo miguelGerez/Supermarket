@@ -13,10 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "menu", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "idMenu")
-        
-}) 
+@Table(name = "menu", uniqueConstraints = { @UniqueConstraint(columnNames = "idMenu")
+
+})
 public class Menu {
 
 	@Id
@@ -30,14 +29,10 @@ public class Menu {
 
 	@Column(name = "url", length = 50)
 	private String url;
-	
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "menu_rol", 
-			joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "idMenu"), 
-			inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id"))
-	private List<Role> roles;	
-	
+	@JoinTable(name = "menu_rol", joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "idMenu"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id"))
+	private List<Role> roles;
 
 	public Integer getIdMenu() {
 		return idMenu;
@@ -78,8 +73,5 @@ public class Menu {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
-	
-	
-		
+
 }

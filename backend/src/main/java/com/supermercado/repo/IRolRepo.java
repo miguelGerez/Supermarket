@@ -9,7 +9,6 @@ import com.supermercado.model.Role;
 
 public interface IRolRepo extends JpaRepository<Role, Integer> {
 
-
-	@Query(value ="select * from rol where id_rol != 99", nativeQuery = true)
+	@Query(value = "select * from rol where id_rol != 99", nativeQuery = true)
 	List<Role> ListarSinProgramador();
 }

@@ -19,7 +19,7 @@ import com.supermercado.service.TagService;
 @RestController
 @RequestMapping("/tag")
 public class TagController {
-	
+
 	@Autowired
 	private TagService service;
 

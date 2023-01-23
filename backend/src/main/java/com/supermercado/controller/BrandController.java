@@ -22,35 +22,30 @@ public class BrandController {
 
 	@Autowired
 	private IBrandRepo repo;
-	
 
 	@GetMapping
-	public List<Brand> listar() throws Exception{
+	public List<Brand> listar() throws Exception {
 		return repo.findAll(Sort.by(Sort.Direction.ASC, "name"));
 	}
-	
+
 	@GetMapping("/cantidadPorId/{id}")
-	public Integer listarCantidadDeProductosPorMarca(@PathVariable("id") Integer id) throws Exception{
+	public Integer listarCantidadDeProductosPorMarca(@PathVariable("id") Integer id) throws Exception {
 		return repo.listarCantidadDeProductosPorMarca(id);
 	}
-	
-	
+
 	@PostMapping
 	public Brand register(@RequestBody Brand m) throws Exception {
 		return repo.save(m);
 	}
-	
+
 	@PutMapping
 	public Brand modificar(@RequestBody Brand m) throws Exception {
 		return repo.save(m);
 	}
-	
-	 
+
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer id) throws Exception{
+	public void eliminar(@PathVariable("id") Integer id) throws Exception {
 		repo.deleteById(id);
 	}
-	
-	
-}
 
+}
