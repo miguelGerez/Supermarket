@@ -23,5 +23,6 @@ public interface UserService  {
 		List<User> findBySpecialization(Integer id) throws Exception;
 
 		void delete(Integer id) throws Exception;
+		
 	
 }

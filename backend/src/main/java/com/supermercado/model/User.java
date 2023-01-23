@@ -43,7 +43,7 @@ public class User {
 	private Integer height;
 	
 	private String phone;
-	
+		
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_role", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<Role> roles;

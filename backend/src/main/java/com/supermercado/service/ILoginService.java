@@ -6,5 +6,5 @@ public interface ILoginService {
 
 	User checkUsername(String user);
 	
-	void changePassword(String clave, String nombre);
+	void changePassword(String password, String name);
 }
