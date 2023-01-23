@@ -1,12 +1,12 @@
 package com.supermercado.history;
 
-import com.supermercado.model.User;
+import com.supermercado.model.Account;
 
 public class HistoryProduct {
 	private Integer idHistoryProduct;
 
 	private String description;
 
-	private User usuario;
+	private Account usuario;
 
 }

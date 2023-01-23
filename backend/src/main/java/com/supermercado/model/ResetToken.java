@@ -21,9 +21,9 @@ public class ResetToken {
 	@Column(nullable = false, unique = true)
 	private String token;
 
-	@OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	@OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name = "id_user")
-	private User user;
+	private Account user;
 
 	@Column(nullable = false)
 	private LocalDateTime expiracion;
@@ -44,11 +44,11 @@ public class ResetToken {
 		this.token = token;
 	}
 
-	public User getUser() {
+	public Account getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Account user) {
 		this.user = user;
 	}
 

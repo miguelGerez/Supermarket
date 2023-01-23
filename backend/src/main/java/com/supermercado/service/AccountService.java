@@ -5,21 +5,21 @@ import java.util.List;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.supermercado.model.User;
+import com.supermercado.model.Account;
 
-public interface UserService {
+public interface AccountService {
 
 	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 
-	User register(User user) throws Exception;
+	Account register(Account user) throws Exception;
 
-	User modify(User user) throws Exception;
+	Account modify(Account user) throws Exception;
 
-	List<User> list() throws Exception;
+	List<Account> list() throws Exception;
 
-	User findById(Integer id) throws Exception;
+	Account findById(Integer id) throws Exception;
 
-	List<User> findBySpecialization(Integer id) throws Exception;
+	List<Account> findBySpecialization(Integer id) throws Exception;
 
 	void delete(Integer id) throws Exception;
 

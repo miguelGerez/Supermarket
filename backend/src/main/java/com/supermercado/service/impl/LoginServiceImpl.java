@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.supermercado.model.User;
+import com.supermercado.model.Account;
 import com.supermercado.repo.ILoginRepo;
 import com.supermercado.service.ILoginService;
 
@@ -18,7 +18,7 @@ public class LoginServiceImpl implements ILoginService {
 	private ILoginRepo repo;
 
 	@Override
-	public User checkUsername(String username) {
+	public Account checkUsername(String username) {
 		return repo.checkUsername(username);
 	}
 

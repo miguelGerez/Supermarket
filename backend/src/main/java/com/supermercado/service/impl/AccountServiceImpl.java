@@ -6,24 +6,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.supermercado.model.User;
-import com.supermercado.repo.IUserRepo;
+import com.supermercado.model.Account;
+import com.supermercado.repo.IAccountRepo;
 
 @Service
-public class UserServiceImpl implements UserDetailsService {
+public class AccountServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private IUserRepo repo;
+	private IAccountRepo repo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = repo.findOneByUsername(username);
+		Account user = repo.findOneByUsername(username);
 
 		if (user == null) {
 			throw new UsernameNotFoundException(String.format("Usuario no existe", username));
@@ -35,7 +36,8 @@ public class UserServiceImpl implements UserDetailsService {
 			roles.add(new SimpleGrantedAuthority(rol.getName()));
 		});
 
-		UserDetails ud = (UserDetails) new User();
+		UserDetails ud = new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true,
+				roles);
 
 		return ud;
 

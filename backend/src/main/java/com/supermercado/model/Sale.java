@@ -25,7 +25,7 @@ public class Sale {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	private Account user;
 
 	@ManyToOne
 	@JoinColumn(name = "payment_method_id")
@@ -51,11 +51,11 @@ public class Sale {
 		this.date = date;
 	}
 
-	public User getUser() {
+	public Account getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Account user) {
 		this.user = user;
 	}
 

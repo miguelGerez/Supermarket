@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.supermercado.model.ResetToken;
-import com.supermercado.model.User;
+import com.supermercado.model.Account;
 import com.supermercado.service.ILoginService;
 import com.supermercado.service.IResetTokenService;
 import com.supermercado.util.EmailUtil;
@@ -39,7 +39,7 @@ public class LoginController {
 	public ResponseEntity<Integer> enviarCorreo(@RequestBody String correo) throws Exception {
 		int rpta = 0;
 
-		User us = service.checkUsername(correo);
+		Account us = service.checkUsername(correo);
 		if (us != null && us.getId() > 0) {
 			ResetToken token = new ResetToken();
 			token.setToken(UUID.randomUUID().toString());

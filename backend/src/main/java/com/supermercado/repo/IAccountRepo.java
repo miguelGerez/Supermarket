@@ -4,15 +4,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.supermercado.model.User;
+import com.supermercado.model.Account;
 
-public interface IUserRepo extends JpaRepository<User, Integer> {
+public interface IAccountRepo extends JpaRepository<Account, Integer> {
 
 	// select * from user where username = ?
-	User findOneByUsername(String username);
+	Account findOneByUsername(String username);
 
-	@Query(value = "UPDATE user SET status = :status WHERE user_id = :id", nativeQuery = true)
-	User changeStatus(@Param("id") Integer id, @Param("status") Boolean status);
+	@Query(value = "UPDATE account us SET us.enabled = :status WHERE us.id = :id", nativeQuery = true)
+	Account changeStatus(@Param("id") Integer id, @Param("status") Boolean status);
 
 	/*
 	 * @Query(value ="select * from user_Category uc\r\n" +

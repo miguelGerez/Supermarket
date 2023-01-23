@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.supermercado.model.User;
-import com.supermercado.repo.IUserRepo;
+import com.supermercado.model.Account;
+import com.supermercado.repo.IAccountRepo;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	private IUserRepo repo;
+	private IAccountRepo repo;
 
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 
 	@GetMapping
-	public List<User> list() throws Exception {
+	public List<Account> list() throws Exception {
 		return repo.findAll();
 	}
 
 	@GetMapping("/{id}")
-	public User listById(@PathVariable("id") Integer id) throws Exception {
+	public Account listById(@PathVariable("id") Integer id) throws Exception {
 		return repo.getOne(id);
 	}
 
 	@GetMapping("/username/{username}")
-	public User findOneByUsername(@PathVariable("username") String username) throws Exception {
+	public Account findOneByUsername(@PathVariable("username") String username) throws Exception {
 		return repo.findOneByUsername(username);
 	}
 
 	@PostMapping
-	public User register(@RequestBody User p) throws Exception {
+	public Account register(@RequestBody Account p) throws Exception {
 		p.setPassword(bcrypt.encode(p.getPassword()));
 		return repo.save(p);
 	}
 
 	@PutMapping
-	public User modify(@RequestBody User p) throws Exception {
+	public Account modify(@RequestBody Account p) throws Exception {
 		return repo.save(p);
 	}
 
