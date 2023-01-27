@@ -16,8 +16,8 @@ import com.supermercado.model.Role;
 import com.supermercado.service.IRolService;
 
 @RestController
-@RequestMapping("/rol")
-public class RolController {
+@RequestMapping("/role")
+public class RoleController {
 
 	@Autowired
 	private IRolService service;

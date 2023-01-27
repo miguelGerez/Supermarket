@@ -29,11 +29,10 @@ public class MenuController {
 		return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
 	}
 
-	@PostMapping("/user")
+	@PostMapping("/account")
 	public ResponseEntity<List<Menu>> listar(@RequestBody String nombre) throws Exception {
 		List<Menu> menus = new ArrayList<>();
 		menus = service.listMenusByUser(nombre);
-		System.out.println(nombre);
 		return new ResponseEntity<List<Menu>>(menus, HttpStatus.OK);
 	}
 

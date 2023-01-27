@@ -57,9 +57,9 @@ public class SaleServiceImpl implements SaleService {
 		List<AnnualSaleDTO> list = new ArrayList<>();
 		repo.annualStatistics().forEach(x -> {
 			AnnualSaleDTO cr = new AnnualSaleDTO();
-			cr.setCantidad(Integer.parseInt(String.valueOf(x[0])));
-			cr.setMes(String.valueOf(x[1]));
-			cr.setTotal(Integer.parseInt(String.valueOf(x[2])));
+			cr.setQuantity(Integer.parseInt(String.valueOf(x[0])));
+			cr.setMonth(String.valueOf(x[1]));
+			cr.setSum(Integer.parseInt(String.valueOf(x[2])));
 			list.add(cr);
 		});
 		return list;

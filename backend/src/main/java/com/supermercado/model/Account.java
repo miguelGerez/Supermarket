@@ -47,7 +47,7 @@ public class Account {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "account_roles", joinColumns = @JoinColumn(name = "account_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<Role> roles;
-
+	
 	public Integer getId() {
 		return id;
 	}

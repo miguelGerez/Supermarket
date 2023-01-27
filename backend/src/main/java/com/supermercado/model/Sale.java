@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class Sale {
@@ -24,16 +26,20 @@ public class Sale {
 	private LocalDateTime date;
 
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private Account user;
+	@JoinColumn(name = "account_id")
+	private Account account;
 
 	@ManyToOne
 	@JoinColumn(name = "payment_method_id")
 	private PaymentMethod paymentMethod;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "sell_id")
-	private List<SaleDetail> sellDetail;
+	@JoinColumn(name = "sale_id")
+	private List<SaleDetail> saleDetail;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	private List<Sale> sales;
 
 	public Integer getId() {
 		return id;
@@ -51,12 +57,13 @@ public class Sale {
 		this.date = date;
 	}
 
-	public Account getUser() {
-		return user;
+
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUser(Account user) {
-		this.user = user;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public PaymentMethod getPaymentMethod() {
@@ -67,12 +74,22 @@ public class Sale {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public List<SaleDetail> getSellDetail() {
-		return sellDetail;
+	public List<SaleDetail> getSaleDetail() {
+		return saleDetail;
 	}
 
-	public void setSellDetail(List<SaleDetail> sellDetail) {
-		this.sellDetail = sellDetail;
+	public void setSaleDetail(List<SaleDetail> saleDetail) {
+		this.saleDetail = saleDetail;
 	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
+	
 
 }

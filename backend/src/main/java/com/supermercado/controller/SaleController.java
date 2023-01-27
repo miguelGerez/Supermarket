@@ -20,7 +20,7 @@ import com.supermercado.repo.ISaleRepo;
 import com.supermercado.service.SaleService;
 
 @RestController
-@RequestMapping("/sell")
+@RequestMapping("sale")
 public class SaleController {
 
 	@Autowired

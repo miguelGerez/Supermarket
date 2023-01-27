@@ -16,7 +16,7 @@ import com.supermercado.model.PaymentMethod;
 import com.supermercado.repo.IPaymentMethodRepo;
 
 @RestController
-@RequestMapping("/metodoDePago")
+@RequestMapping("/paymentMethod")
 public class PaymentMethodController {
 
 	@Autowired

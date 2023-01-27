@@ -13,49 +13,49 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "menu", uniqueConstraints = { @UniqueConstraint(columnNames = "idMenu")
+@Table(name = "menu", uniqueConstraints = { @UniqueConstraint(columnNames = "id")
 
 })
 public class Menu {
 
 	@Id
-	private Integer idMenu;
+	private Integer id;
 
-	@Column(name = "icono", length = 20)
-	private String icono;
+	@Column(name = "icon", length = 20)
+	private String icon;
 
-	@Column(name = "nombre", length = 20)
-	private String nombre;
+	@Column(name = "name", length = 20)
+	private String name;
 
 	@Column(name = "url", length = 50)
 	private String url;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "menu_rol", joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "idMenu"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "id"))
+	@JoinTable(name = "menu_roles", joinColumns = @JoinColumn(name = "menu_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private List<Role> roles;
 
-	public Integer getIdMenu() {
-		return idMenu;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdMenu(Integer idMenu) {
-		this.idMenu = idMenu;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getIcono() {
-		return icono;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setIcono(String icono) {
-		this.icono = icono;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getUrl() {
@@ -73,5 +73,4 @@ public class Menu {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
 }

@@ -2,43 +2,44 @@ package com.supermercado.dto;
 
 public class AnnualSaleDTO {
 
-	private String mes;
-	private Integer cantidad;
-	private Integer total;
+	private String month;
+	private Integer quantity;
+	private Integer sum;
 
 	public AnnualSaleDTO() {
 
 	}
 
-	public AnnualSaleDTO(Integer id, String mes, Integer cantidad, Integer total) {
+	public AnnualSaleDTO(String month, Integer quantity, Integer sum) {
 		super();
-		this.mes = mes;
-		this.cantidad = cantidad;
-		this.total = total;
+		this.month = month;
+		this.quantity = quantity;
+		this.sum = sum;
 	}
 
-	public String getMes() {
-		return mes;
+	public String getMonth() {
+		return month;
 	}
 
-	public void setMes(String mes) {
-		this.mes = mes;
+	public void setMonth(String month) {
+		this.month = month;
 	}
 
-	public Integer getCantidad() {
-		return cantidad;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
-	public Integer getTotal() {
-		return total;
+	public Integer getSum() {
+		return sum;
 	}
 
-	public void setTotal(Integer total) {
-		this.total = total;
+	public void setSum(Integer sum) {
+		this.sum = sum;
 	}
 
+	
 }

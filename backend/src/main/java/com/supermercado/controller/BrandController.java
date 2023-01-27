@@ -17,7 +17,7 @@ import com.supermercado.model.Brand;
 import com.supermercado.repo.IBrandRepo;
 
 @RestController
-@RequestMapping("/marca")
+@RequestMapping("/brand")
 public class BrandController {
 
 	@Autowired

@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.supermercado.model.Role;
-import com.supermercado.repo.IRolRepo;
+import com.supermercado.repo.IRoleRepo;
 import com.supermercado.service.IRolService;
 
 @Service
 public class RolServiceImpl implements IRolService {
 
 	@Autowired
-	private IRolRepo repo;
+	private IRoleRepo repo;
 
 	@Override
 	public Role registrar(Role p) throws Exception {

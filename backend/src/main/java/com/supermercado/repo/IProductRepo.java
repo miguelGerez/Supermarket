@@ -19,7 +19,7 @@ public interface IProductRepo extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT * FROM product WHERE category_id = :idCategory and brand_id = :idBrand", nativeQuery = true)
 	List<Product> listByCategoryAndBrand(@Param("idBrand") Integer idBrand, @Param("idCategory") Integer idCategory);
 
-	@Query(value = "SELECT * FROM product WHERE bar_code = :string", nativeQuery = true)
+	@Query(value = "SELECT * FROM product WHERE bard_code = :string", nativeQuery = true)
 	Product listByBarCode(@Param("string") String string);
 
 	@Query(value = "SELECT * FROM product WHERE quick_access = true", nativeQuery = true)
@@ -31,7 +31,7 @@ public interface IProductRepo extends JpaRepository<Product, Integer> {
 	@Query(value = "SELECT * FROM product WHERE sale_price IS NULL", nativeQuery = true)
 	List<Product> listByNoPrice();
 
-	@Query(value = "SELECT * FROM product WHERE LOWER(name) LIKE CONCAT('%', :string, '%') OR bar_code = :string", nativeQuery = true)
+	@Query(value = "SELECT * FROM product WHERE LOWER(name) LIKE CONCAT('%', :string, '%') OR bard_code = :string", nativeQuery = true)
 	List<Product> listByAutoComplete(@Param("string") String string);
 
 }

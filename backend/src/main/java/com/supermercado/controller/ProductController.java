@@ -67,7 +67,7 @@ public class ProductController {
 		return productService.listByCategoryAndBrand(brandId, categoryId);
 	}
 
-	@GetMapping("/bar_code/{string}")
+	@GetMapping("/bard_code/{string}")
 	public ResponseEntity<Product> listByBarCode(@PathVariable("string") String string) throws Exception {
 		Product product = productService.listByBarCode(string);
 		return new ResponseEntity<>(product, HttpStatus.OK);

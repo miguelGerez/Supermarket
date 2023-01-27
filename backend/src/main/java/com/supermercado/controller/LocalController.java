@@ -12,34 +12,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.supermercado.dto.CategoryDTO;
-import com.supermercado.model.Category;
-import com.supermercado.service.CategoryService;
+import com.supermercado.model.Local;
+import com.supermercado.service.LocalService;
 
 @RestController
-@RequestMapping("/category")
-public class CategoryController {
+@RequestMapping("/local")
+public class LocalController {
 
 	@Autowired
-	private CategoryService service;
+	private LocalService service;
 
 	@GetMapping
-	public List<Category> list() throws Exception {
+	public List<Local> list() throws Exception {
 		return service.list();
 	}
 
-	@GetMapping("/cantidadPorId")
-	public List<CategoryDTO> listProductsCountByCategory() throws Exception {
-		return service.listProductsCountByCategory();
-	}
 
 	@PostMapping
-	public Category register(@RequestBody Category p) throws Exception {
+	public Local register(@RequestBody Local p) throws Exception {
 		return service.register(p);
 	}
 
 	@PutMapping
-	public Category modify(@RequestBody Category p) throws Exception {
+	public Local modify(@RequestBody Local p) throws Exception {
 		return service.modify(p);
 	}
 

@@ -9,7 +9,12 @@ import com.supermercado.model.Menu;
 
 public interface IMenuRepo extends IGenericRepo<Menu, Integer> {
 
-	@Query(value = "select m.* from menu_rol mr inner join user_rol ur on ur.id_rol = mr.id_rol inner join menu m on m.id_menu = mr.id_menu inner join user u on u.id_user = ur.id_user where u.username = :name", nativeQuery = true)
+	@Query(value = "select m.* from menu_roles mr\r\n"
+			+ "inner join account_roles ar\r\n"
+			+ "on ar.role_id = mr.role_id\r\n"
+			+ "inner join menu m on m.id = mr.menu_id\r\n"
+			+ "inner join account a on a.id = ar.account_id\r\n"
+			+ "where a.username = :name", nativeQuery = true)
 	List<Menu> listMenusByUser(@Param("name") String name);
 
 }
