@@ -111,10 +111,12 @@ public class ProductController {
 
 	@PostMapping
 	public ResponseEntity<Product> register(@RequestBody Product product) throws Exception {
+		/*
 		Product existingProduct = productService.listByBarCode(product.getBard_code());
 		if (existingProduct != null) {
 			throw new ModeloNotFoundException("A product with that barcode already exists.");
 		}
+		*/
 
 		Product newProduct = productService.register(product);
 		return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);

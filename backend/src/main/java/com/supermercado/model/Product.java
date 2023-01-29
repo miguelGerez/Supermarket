@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +29,7 @@ public class Product {
 
 	private String descripcion;
 
+	@Column(unique = true, nullable = true)
 	private String bard_code;
 
 	private BigDecimal profit;
