@@ -140,7 +140,7 @@ public class ProductController {
 		Product existingProduct = productService.listById(p.getId());
 		if (existingProduct.getSalePrice() != p.getSalePrice()) {
 			p.setPriceUptime(LocalDateTime.now());
-			tagService.productToTag(p);
+			//tagService.productToTag(p);
 		} else {
 			p.setModifyUptime(LocalDateTime.now());
 		}
