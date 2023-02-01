@@ -1,0 +1,16 @@
+canvas{
+ flex-grow: 1;
+}
+
+
+mat-card-content{
+  display: flex;
+  justify-content: center;
+}
+
+mat-form-field{
+  width: 50%;
+  align-self: center;
+}
+
+

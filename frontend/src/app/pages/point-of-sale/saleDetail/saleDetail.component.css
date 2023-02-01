@@ -1,0 +1,32 @@
+.flex-container {
+  display: flex;
+  height: 500px;
+  width: 600px;
+  gap: 10px 10px;
+  overflow: auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+}
+
+.tabla{
+width: 100%;
+}
+
+.table-container{
+  height: 100%;
+  overflow-y: auto;
+}
+
+table tbody tr {
+  height: auto;
+}
+
+.header{
+  flex: 0 0 auto;
+}

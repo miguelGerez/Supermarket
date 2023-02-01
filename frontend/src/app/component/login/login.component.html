@@ -1,0 +1,35 @@
+<div class="img w-100 h-100" style="background-image: url(assets/login/bg.jpg);">
+
+
+  <section class="ftco-section">
+    <div class="flex-container">
+      <div class="">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">Login</h2>
+        </div>
+      </div>
+      <div class="">
+          <div class="login-wrap p-0">
+            <form action="#" class="signin-form">
+              <div class="form-group">
+                <input type="email" id="email" name="email" id="form2Example17" type="text"
+                  class="form-controle text-center" [(ngModel)]="account" placeholder="Usuario" required>
+              </div>
+              <div class="form-group">
+                <input type="password" id="password" name="password" id="form2Example27" [(ngModel)]="clave"
+                  class="form-controle text-center" placeholder="Password" required>
+                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+              </div>
+              <div class="form-group">
+                <button (click)="iniciarSesion()" type="submit"
+                  class="form-controle btn btn-primary submit px-3">Iniciar
+                  sesion</button>
+              </div>
+
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

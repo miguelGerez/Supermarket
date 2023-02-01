@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline">
+  <mat-label class="text-center">Buscador inteligente</mat-label>
+  <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+  <mat-autocomplete #auto="matAutocomplete" [panelWidth]="auto">
+    <mat-option (click)="addProduct(state); limpiarAutocompletado() "
+      *ngFor="let state of autoCompleteList | async">
+      <span>{{state.name}}</span> |
+      <small>{{state.brand?.name}}</small> |
+      <small>cont.neto: {{state.netContent}}</small> |
+      <small>price: {{state.salePrice}}</small>
+    </mat-option>
+    <mat-option *ngIf="(autoCompleteList | async)?.length==0" disabled class="text-center">
+      No se encuentra el product {{stateCtrl.value}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

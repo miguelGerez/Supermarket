@@ -1,0 +1,21 @@
+<form [formGroup]="formGroup" (submit)="operar()">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Nombre
+          </mat-label>
+          <input formControlName="name" required="true" matInput>
+        </mat-form-field>
+      </div>
+  </div>
+  <div class="row text-center">
+      <div class="col">
+        <button [disabled]="!formGroup.valid || loading" mat-stroked-button>
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+  </form>

@@ -1,0 +1,134 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer position="end" class="col-12 col-md-4 col-sm-5 col-xl-3" mode="over">
+    <p class="mat-title text-center ">Acceso rapido</p>
+    <div *ngFor="let p of ProductsDeRapidoAcceso" class="text-center my-1">
+      <button class="w-50" (click)="ProductGenericoDialog(p); drawer.toggle()" mat-stroked-button>{{p.name}}</button>
+    </div>
+  </mat-drawer>
+  <div class="flex-container">
+    <div class="flex-item1">
+      <table *ngIf="dataSource.data.length" mat-table [dataSource]="dataSource" class=" mat-elevation-z0">
+
+        <ng-container matColumnDef="product">
+          <mat-header-cell *matHeaderCellDef>
+            Producto
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{element.product?.name ? element.product.name : element.name}}
+          </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="brand">
+          <mat-header-cell *matHeaderCellDef>Marca</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.product?.brand?.name}}
+          </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef>Cantidad</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button *ngIf="element.quantity !== 1" (click)="element.quantity = element.quantity - 1 " mat-icon-button>
+              <mat-icon>remove</mat-icon>
+            </button>
+            {{element.quantity | number}}
+            <button (click)="element.quantity = element.quantity + 1 " mat-icon-button>
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="priceUnidad">
+          <mat-header-cell *matHeaderCellDef>Precio por unidad</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.product?.salePrice ? element.product.salePrice : element.price |
+            currency:"$":"symbol"}}
+          </mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element" class="justify-content-end">
+            <button mat-icon-button color="" matTooltipShowDelay="600" matTooltip="Eliminar"
+              (click)="removerDetalle(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+          <mat-footer-cell color="primary" *matFooterCellDef>
+            <p class="mat-h2"> Total {{getTotalCost() | currency:'USD'}} </p>
+          </mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row class="mat-elevation-z2" *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row class="mat-elevation-z2 my-1" matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row class="mat-elevation-z2" *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+      </table>
+      <div *ngIf="!dataSource.data.length" class="img">
+        <img width="100%" data-aos="flip-left" data-aos-duration="1600" src="/assets/empty-cart.svg" alt="">
+        <p class="mat-h2 ">No hay products agregados</p>
+      </div>
+    </div>
+    <!--Grid 2-->
+    <div class="flex-item2 mx-auto">
+      <mat-card class="mat-elevation-z8">
+        <mat-card-title>
+          Búscador
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row justify-content-center text-center gx-5">
+            <app-search (producto)="agregarProduct($event)"></app-search>
+          </div>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+          <button mat-raised-button color="accent" (click)="drawer.toggle()">
+            Acceso rápido
+          </button>
+          <button mat-raised-button color="accent" (click)="saleDetailDialog(); drawer.close()">
+            Agregar un producto
+          </button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card *ngIf="dataSource.data.length">
+        <mat-card-title>Método de pago</mat-card-title>
+        <mat-card-content>
+          <div class="row text-center gx-5">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Seleccione una opción" [(ngModel)]="paymentMethod" class="text-center">
+                <mat-option [value]="option" *ngFor="let option of listaDePaymentMethod">
+                  {{ option.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card *ngIf="paymentMethod?.name === 'efectivo'">
+        <mat-card-title>
+          Calculadora
+        </mat-card-title>
+        <mat-card-content>
+          <div class="row justify-content-center text-center gx-5">
+            <div class="text-center">
+              <mat-form-field appearance="outline">
+                <mat-label>Dinero del cliente</mat-label>
+                <input (input)="Vuelto()" [(ngModel)]="ingreso" matInput>
+              </mat-form-field>
+              <p *ngIf="vuelto && vuelto > 0"> El vuelto es de {{vuelto}} </p>
+
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <button *ngIf="dataSource.data.length" mat-raised-button (click)="Sale()" color="accent"
+        [disabled]="dataSource.data.length == 0 || !paymentMethod || loading">
+        Continuar
+      </button>
+    </div>
+  </div>
+</mat-drawer-container>

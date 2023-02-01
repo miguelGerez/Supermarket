@@ -1,0 +1,16 @@
+<div class="example-container"  *ngIf="route.children.length === 0">
+    <mat-form-field>
+        <input matInput type="email" placeholder="Tu email" required [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-progress-bar mode="determinate" [value]="porcentaje"></mat-progress-bar>
+
+    <br />
+
+    <button mat-raised-button color="primary" (click)="enviar()" [disabled]="!email">Enviar email</button>
+
+    <mat-toolbar *ngIf="mensaje">{{mensaje}}</mat-toolbar>
+    <mat-toolbar *ngIf="error">{{error}}</mat-toolbar>
+</div>
+
+<router-outlet *ngIf="route.children.length !== 0"></router-outlet>

@@ -1,0 +1,15 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-title>
+    <h1 class="mat-h1 text-center">Ventas por usuario</h1>
+  </mat-card-title>
+<div class="flex-container">
+  <canvas baseChart
+  [data]="barChartData"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [type]="'bar'">
+</canvas>
+
+</div>
+</mat-card>

@@ -1,0 +1,12 @@
+<h1>Historial</h1>
+<mat-card class="my-1" *ngFor="let etiqueta of etiquetas">
+  <div class="d-flex justify-content-around">
+    <span>{{etiqueta.products.length}} products</span>
+    <span>Fecha {{etiqueta.date}}</span>
+      <span class="material-icons">
+        visibility
+      </span>
+
+
+  </div>
+</mat-card>

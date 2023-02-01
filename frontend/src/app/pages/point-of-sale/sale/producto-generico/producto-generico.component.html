@@ -1,0 +1,18 @@
+<div class="flex-container">
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input required matInput [(ngModel)]="product.name">
+  </mat-form-field>
+
+
+  <mat-form-field floatLabel="always" appearance="outline">
+    <mat-label>Precio de venta</mat-label>
+    <input [(ngModel)]="product.salePrice" required="true" matInput>
+    <span matPrefix>$</span>
+
+  </mat-form-field>
+
+  <button mat-stroked-button (click)="SendProduct()">Aceptar</button>
+
+</div>

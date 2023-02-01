@@ -1,0 +1,66 @@
+.close-button {
+  float: right;
+  top: -24px;
+  right: -24px;
+  z-index: 999;
+}
+
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+::ng-deep .icon-outside .close-button {
+  float: right;
+  top: -52px;
+  right: -52px;
+}
+
+::ng-deep .icon-outside .mat-dialog-container {
+  overflow: unset;
+}
+
+
+.grid-flexbox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.form-container{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+
+.flex-item1{
+  width: 75%;
+}
+
+.flex-item2{
+  width: 75%;
+}
+
+mat-acordion{
+  width: 75%;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.chill1{
+  display: flex;
+}
+
+.saveButton{
+text-align: end;}

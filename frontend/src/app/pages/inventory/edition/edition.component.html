@@ -1,0 +1,150 @@
+<form novalidate [formGroup]="formGroup" (ngSubmit)="operar()" #f="ngForm">
+  <div class="grid-flexbox">
+
+    <header>
+        <div class="header-left">
+          <img width="200px" src="assets/{{ srcPicture }}" />
+          <span>
+            <p>producto</p>
+            <h1 class="mat-h1">
+              {{
+              this.formGroup.controls["name"].value
+              ? this.formGroup.controls["name"].value
+              : "Nuevo
+              producto"
+              }}
+            </h1>
+          </span>
+        </div>
+        <button mat-mini-fab color="accent" type="button" [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button type="button" mat-menu-item *ngIf="!modificar"  (click)="enviarATag()" [disabled]="loading">
+            <mat-icon>label</mat-icon>
+            Crear etiqueta
+          </button>
+          <button type="button" mat-menu-item [disabled]="loading">
+            <mat-slide-toggle formControlName="quickAccess">Acceso rapido</mat-slide-toggle>
+          </button>
+        </mat-menu>
+    </header>
+
+      <mat-accordion multi >
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              General
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="form-container">
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="name" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Contenido neto</mat-label>
+              <input matInput formControlName="netContent" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Marca</mat-label>
+              <mat-select [compareWith]="compareObjectsBrand" formControlName="brand">
+                <mat-select-filter [placeholder]="'Filtro'" [displayMember]="'name'" [array]="brands"
+                  (filteredReturn)="filteredBrand = $event"></mat-select-filter>
+                <mat-option [value]="option" *ngFor="let option of filteredBrand">
+                  {{ option.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Categoría</mat-label>
+              <mat-select [compareWith]="compareObjectsCategory" formControlName="category">
+                <mat-select-filter [placeholder]="'Filtro'" [displayMember]="'name'" [array]="categorys"
+                  (filteredReturn)="filteredCategory = $event"></mat-select-filter>
+                <mat-option *ngFor="let category of filteredCategory" [value]="category">
+                  {{ category.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Código de barras</mat-label>
+              <input matInput formControlName="bard_code" />
+            </mat-form-field>
+
+          </div>
+
+          <mat-form-field appearance="outline" floatLabel="always" class="w-75">
+            <textarea formControlName="descripcion" matInput></textarea>
+            <mat-label>Descripción</mat-label>
+          </mat-form-field>
+
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Costos
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+          <div class="form-container">
+
+            <!--
+            <mat-form-field appearance="outline">
+              <mat-label>Provideres</mat-label>
+              [formControl]="toppings"
+              <mat-select [compareWith]="compareObjects" multiple formControlName="providers">
+                <mat-option *ngFor="let proovedor of providers$ | async" [value]="proovedor">{{ proovedor.name
+                  }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          -->
+            <mat-form-field floatLabel="always" appearance="outline">
+              <mat-label>Precio de costo</mat-label>
+              <input (change)="priceFinal()" formControlName="purchasePrice" matInput />
+              <span matPrefix>$</span>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" class="fix-suffix" appearance="outline">
+              <mat-label>Ganancia</mat-label>
+              <input (change)="priceFinal()" formControlName="salePrice" matInput />
+              <span matPrefix>%</span>
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline">
+              <mat-label>Precio de sale final</mat-label>
+              <input formControlName="salePrice" matInput />
+              <span matPrefix>$</span>
+            </mat-form-field>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel expanded disabled>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Inventario
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+
+        </mat-expansion-panel>
+        <div class="saveButton">
+          <button [disabled]="loading" mat-raised-button color="accent">
+            Guardar
+          </button>
+        </div>
+
+      </mat-accordion>
+
+  </div>
+
+
+</form>

@@ -1,0 +1,91 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+      {{title}}
+
+    <span class="example-spacer"></span>
+
+    {{ account }}
+
+    <!---->
+    <button mat-icon-button (click)="print()">
+      <mat-icon>list</mat-icon>
+    </button>
+
+
+ <button mat-icon-button (click)="requestUsb()">
+      <mat-icon>history</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="history" (click)="listSell()">
+      <mat-icon>history</mat-icon>
+    </button>
+
+    <mat-menu class="sales" #history="matMenu" >
+      <div *ngIf="sales?.length !== 0">
+        <p style="text-align: center;">Sales de hoy</p>
+        <mat-divider></mat-divider>
+        <button (click)="dialogProduct(sale)" *ngFor="let sale of sales" mat-menu-item>
+          {{sale.saleDetail.length}} products | {{moment(sale.date)}}
+        </button>
+      </div>
+      <div>
+        <p *ngIf="sales?.length === 0">No existen sales el dia de hoy</p>
+
+      </div>
+    </mat-menu>
+
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="routeProfile()">
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.opened = false" (click)="loginService.cerrarSesion();">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+<!--<button mat-icon-button>
+      <mat-icon
+      [ngClass]="{'icon-printer-enable': status, 'icon-printer-disable': !status }">print</mat-icon>
+    </button>-->
+
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" hasBackdrop="true">
+    <mat-sidenav mode="over" #sidenav style="width: 200px">
+
+      <div *ngFor="let m of menus">
+        <button mat-menu-item routerLink="{{m.url}}" (click)="sidenav.close()" style="cursor: pointer">
+          <mat-icon>{{m.icon}}</mat-icon>
+          <span *ngIf="!opened">{{m.name}}</span>
+        </button>
+        <mat-divider></mat-divider>
+      </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <div *ngIf="loading" class="loading-container flex-content-center">
+    <mat-progress-spinner color="warn" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
+
+
+</div>

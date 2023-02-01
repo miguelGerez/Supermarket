@@ -1,0 +1,46 @@
+.title {
+  font-size: 2vw;
+  color: #3077d3;
+}
+.subtitle {
+  color: #9e9e9e;
+}
+
+.flex-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: 1fr;
+  gap: 10px 10px;
+  align-content: start;
+  justify-items: stretch;
+}
+
+
+.flex-table {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 1%;
+}
+
+.grid-chart {
+display: flex;
+flex-wrap: wrap;
+align-items: baseline;
+justify-content: space-around;
+}
+
+.grid-chart > *{
+  margin: 1%;
+}
+
+.text {
+  font-size: medium;
+}
+
+.flex-item{
+  background-color: #8a5858;
+}
+
+.caja > *{
+  margin: 2%;
+}

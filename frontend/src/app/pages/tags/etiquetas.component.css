@@ -1,0 +1,96 @@
+.etiqueta{
+  /*min-width: 8cm; */
+  width: 7cm;
+  /*min-height: 3.17cm; */
+
+  height: 3.17cm;
+
+}
+.name{
+    color:white;
+    font-size: 19px;
+}
+
+.fondo{
+  background-color: black;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.container-holder {
+  width: 800px;
+  padding: 3px;
+  page-break-inside: avoid;
+  display: block;
+}
+.container-row {
+  margin: 3px;
+  page-break-inside: avoid;
+}
+.container {
+  width: 44%;
+  max-height: 120px;
+  margin: 10px;
+  padding: 10px;
+  display : inline-block;
+  vertical-align: bottom;
+}
+.container img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+b{
+  font-family: Myriad Pro Regular;
+}
+.bSize{
+  font-size: 50px;
+  font-family: Myriad Pro Regular;
+
+}
+
+@font-face {
+  font-family: 'Myriad Pro Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Myriad Pro Regular'), url('../../../assets/font/MYRIADPRO-REGULAR.woff') format('woff');
+  }
+
+
+  .col {
+    border: solid 1px #6c757d;
+  }
+/*
+  .content-1 {
+    background-color: lightcoral;
+  }
+
+  .content-2 {
+      background-color: lightgreen;
+  }
+
+  .content-3 {
+    background-color: lightblue;
+  }
+*/
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+
+.open{opacity:0;}
+.open:hover{opacity:1; color: white;}
+
+
+
+

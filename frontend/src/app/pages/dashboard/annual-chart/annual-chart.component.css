@@ -1,0 +1,10 @@
+.flex-container{
+  display: flex;
+  justify-content: center;
+}
+
+canvas{
+  flex: 1 1 auto;
+  width: 100%;
+}
+

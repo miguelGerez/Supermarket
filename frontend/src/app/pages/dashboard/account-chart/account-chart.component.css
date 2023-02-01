@@ -1,0 +1,12 @@
+
+canvas{
+  flex-grow: 1;
+}
+
+flex-container{
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  align-items: center;
+}
+

@@ -1,0 +1,22 @@
+<mat-toolbar *ngIf="!tokenValido">
+    La petición no es válida o ha expirado :(</mat-toolbar>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="tokenValido">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput type="password" name="password" placeholder="Nueva contraseña" formControlName="password"
+                    [formGroup]="form" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="Repetir contraseña" formControlName="confirmPassword"
+                    [formGroup]="form" required>
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Cambiar contraseña</button>
+
+            <mat-toolbar *ngIf="form.controls.confirmPassword.errors?.MatchPassword">Contraseñas no coinciden</mat-toolbar>
+            <mat-toolbar *ngIf="mensaje">{{mensaje}}</mat-toolbar>
+            <mat-toolbar *ngIf="error">{{error}}</mat-toolbar>
+        </div>
+    </form>

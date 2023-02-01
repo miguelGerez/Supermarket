@@ -1,0 +1,10 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-title>
+    <h1 class="mat-h1 text-center">Metodo de pago</h1>
+  </mat-card-title>
+  <mat-card-content>
+    <canvas baseChart class="grafico" [type]="'pie'" [datasets]="pieChartDatasets" [labels]="pieChartLabels"
+      [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+    </canvas>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,61 @@
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: normal;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: auto;
+
+}
+
+.flex-item1{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 1rem;
+}
+
+.flex-item2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+table{
+  height: 100%;
+}
+
+.menu{
+  background-color: cadetblue;
+  flex-grow: 1;
+  flex: 1 1 auto;
+  display: block;
+}
+
+.actions{
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.img{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-card{
+  margin: 0.5rem;
+  width: 100%;
+}
+
+mat-card-title{
+  margin: 0.5rem;
+}
+

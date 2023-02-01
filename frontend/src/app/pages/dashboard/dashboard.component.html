@@ -1,0 +1,52 @@
+<!--
+ <mat-form-field appearance="outline">
+  <mat-label>Local</mat-label>
+  <mat-select [formControl]="local">
+    <mat-option *ngFor="let e of (local$ | async)">
+      {{e.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+-->
+<mat-form-field style="font-size: 14px" appearance="outline">
+  <mat-label>DD/MM/AAAA</mat-label>
+  <input matInput [matDatepicker]="picker" (dateChange)="salePorFecha($event.value)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+<div class="flex-container " *ngIf="dataSource">
+  <div class="flex-table">
+    <app-sale-table [data]="dataSource"></app-sale-table>
+  </div>
+  <div class="grid-chart">
+
+
+      <mat-card class="mat-elevation-z8 caja">
+        <p class="mat-headline-3">Caja: ${{total}}</p>
+        <p class="mat-h4">{{dataSource?.length}} ventas realizadas</p>
+      </mat-card>
+
+
+      <app-schedule-chart [data]="dataSource"></app-schedule-chart>
+      <app-account-chart [data]="dataSource"></app-account-chart>
+      <app-payment-method-chart [data]="dataSource"></app-payment-method-chart>
+      <app-brand-chart [data]="dataSource"></app-brand-chart>
+
+  </div>
+</div>
+
+<div class="row pantalla">
+  <div class="col-6">
+    <annual-chart></annual-chart>
+  </div>
+  <div class="col-6">
+    <mat-card>
+      <mat-card-title>
+        Ventas mensuales
+      </mat-card-title>
+      <mat-card-content>
+        <app-monthly-chart></app-monthly-chart>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

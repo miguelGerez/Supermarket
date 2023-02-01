@@ -1,0 +1,44 @@
+<mat-card class="w-100">
+  <mat-card-header>
+    <mat-card-title> Brand </mat-card-title>
+
+  </mat-card-header>
+  <mat-card-subtitle>
+    <mat-form-field class="w-50" appearance="outline">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="table-container">
+
+    <table matSort mat-table [dataSource]="dataSource" class="w-100">
+      <ng-container matColumnDef="name">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container  matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            matTooltip="editar"
+            (click)="openDialogEdicion(element)"
+            mat-icon-button
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  </mat-card-content>
+  <mat-card-actions class="text-right">
+    <button (click)="openDialogEdicion()" matTooltip="agregar" mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

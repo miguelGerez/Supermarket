@@ -1,0 +1,15 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-title>
+    Ventas por horario
+  </mat-card-title>
+
+    <div class="flex-container">
+      <canvas baseChart
+         [type]="'line'"
+         [data]="lineChartData"
+         [options]="lineChartOptions"
+         [legend]="lineChartLegend">
+       </canvas>
+     </div>
+
+</mat-card>

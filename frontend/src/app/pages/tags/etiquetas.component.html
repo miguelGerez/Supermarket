@@ -1,0 +1,98 @@
+<div class="container-fluid">
+
+
+  <mat-toolbar class="bg-transparent d-flex justify-content-between my-4">
+    <span>Tags</span>
+    <div style="font-size: 14px">
+
+      <form class="w-100">
+        <mat-form-field appearance="outline">
+          <mat-label>Buscador inteligente</mat-label>
+          <input matInput aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+
+          <mat-autocomplete #auto="matAutocomplete" [panelWidth]="auto">
+            <mat-option (click)="agregarProduct(state);" *ngFor="let state of autoCompleteList | async">
+              <span>{{state.name}}</span> |
+              <small>{{state.brand?.name}}</small> |
+              <small>cont.neto: {{state.netContent}}</small> |
+              <small>price: {{state.salePrice}}</small>
+            </mat-option>
+            <mat-option *ngIf="(autoCompleteList | async)?.length==0" disabled class="text-center">
+              No se encuentra el product {{stateCtrl.value}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </form>
+    </div>
+
+
+
+    <div>
+      <button color="primary" mat-raised-button (click)="save()">Guardar</button>
+
+      <button type="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <button class="w-100  my-1" mat-menu-item (click)="printTest()" color="primary">
+          <mat-icon>print</mat-icon>
+          <span class="mx-1">Imprimir</span>
+        </button>
+
+
+
+        <button class="w-100 my-1" mat-menu-item (click)="finalizar()" color="primary">
+          <mat-icon>done</mat-icon>
+          <span class="mx-1">Limpiar listado</span>
+        </button>
+
+
+
+      </mat-menu>
+    </div>
+
+  </mat-toolbar>
+
+  <div class="row justify-content-center ">
+
+
+    <div class="container-holder" id="test">
+      <div class="container-row">
+        <div *ngFor="let product of etiqueta?.products" class="container my-2 ">
+          <div class=" etiqueta container-fluid d-flex flex-column" style="border: solid;">
+            <div class="row bg-black position-relative">
+              <button (click)="EliminarTag(product)" class="position-absolute top-0 end-0 open" mat-icon-button
+                type="button">
+                <span class="material-icons">
+                  cancel
+                </span>
+              </button>
+              <div class="col">
+                <div class="content-1 text-center ">
+                  <b class="name my-2">{{product.name}}</b>
+
+                </div>
+              </div>
+            </div>
+            <div class="row flex-fill ">
+              <div class="col d-flex flex-column">
+                <div class="vertical-center">
+                  <b class="m-auto bSize">${{product.salePrice}}</b>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="content-3">
+                  <b>cont neto {{product.netContent}}</b>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

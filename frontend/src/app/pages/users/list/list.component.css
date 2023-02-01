@@ -1,0 +1,25 @@
+[mat-row].remove-background {
+  background: none ;
+}
+
+
+.boton{
+  flex: 1 1 auto;
+
+}
+
+
+.table{
+  width: 100%;
+  overflow: auto;
+}
+
+.card{
+  width: 50%;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
