@@ -1,3 +1,4 @@
+import { TableDetailComponent } from './table-detail/table-detail.component';
 import { SearchComponent } from './search/search.component';
 import { MaterialModule } from '../../material/material.module';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { ThermalPrintModule } from 'ng-thermal-print';
     SaleDetalleComponent,
     ProductGenericoComponent,
     PointOfSaleComponent,
-    SearchComponent
+    SearchComponent,
+    TableDetailComponent
   ],
   imports: [
     CommonModule,

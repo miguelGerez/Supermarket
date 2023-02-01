@@ -1,3 +1,4 @@
+import { CartService } from './../../_service/cart-service.service';
 import { ThermalPrintService } from './../../_service/thermalPrint.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -35,6 +36,7 @@ export class PointOfSaleComponent {
   totalPorUnidad!: number;
   total: number = 0;
   saleDetail!: SaleDetail[];
+  //eliminar o modificar
 
   showFiller = false;
 
@@ -48,13 +50,9 @@ export class PointOfSaleComponent {
   listaDePaymentMethod!: PaymentMethod[];
   paymentMethod!: PaymentMethod
 
-  dataSource = new MatTableDataSource<SaleDetail>();
-  displayedColumns: string[] = ['product', 'brand', 'quantity', 'priceUnidad', 'total'];
-
   bardCode: string;
   barCodeSubscription: Subscription;
   barCodeObservable$: Observable<string>
-
 
 
   constructor(
@@ -65,25 +63,20 @@ export class PointOfSaleComponent {
     private dialog: MatDialog,
     private _loading: LoadingService,
     private bardCodeService: bardCodeService,
-    private thermalPrint: ThermalPrintService
-  ) { }
+    private thermalPrint: ThermalPrintService,
+    private _cartService: CartService)
+   { }
 
-  ngOnChanges(){
+  ngOnChanges() {
   }
   ngOnInit(): void {
     this.subscribeToBarCode();
     AOS.init();
     this.ListarProductsDeAccesoRapido()
     this.listenToLoading();
-
-/*
-    this.accountService.getAccountActivo().subscribe(data => {
-      this.account = data
-      console.log(data)
+    this._cartService.cart$.subscribe(data=>{
+      this.saleDetail = data
     })
-
-
-*/
 
     const groupBy = (data, keyFn) => data.reduce((agg, item) => {
       const group = keyFn(item);
@@ -97,11 +90,11 @@ export class PointOfSaleComponent {
     })
 
     this.productService.getProductGenerico().subscribe(data => {
-      this.agregarProduct(data)
+      this.addProduct(data)
     })
 
     this.saleService.getDetalle().subscribe(data => {
-      this.addDetailInTable(data)
+     // this.addDetailInTable(data)
     })
 
   }
@@ -135,21 +128,19 @@ export class PointOfSaleComponent {
           this.bard_code = ''
         }
         else {
-          this.agregarProduct(data);
+          this.addProduct(data);
         }
       });
   }
 
-  Vuelto() {
-    this.vuelto = this.ingreso - this.dataSource.data.map(t => t.price * t.quantity).reduce((acc, value) => acc + value, 0)
-  }
+
 
   mensaje(message: string, action: string) {
     this.snackBar.open(message, action, { duration: 5000 });
   }
 
   limpiar() {
-    this.dataSource.data = [];
+    //this.dataSource.data = [];
     this.table.renderRows();
     this.total = 0;
     this.vuelto = null;
@@ -164,18 +155,12 @@ export class PointOfSaleComponent {
     })
   }
 
-  removerDetalle(saleDetail: SaleDetail) {
-    const index = this.dataSource.data.indexOf(saleDetail)
-    const d = this.dataSource.data;
-    d.splice(index, 1)
-    this.dataSource.data = d;
-  }
-
   saleDetailDialog() {
     this.dialog.open(SaleDetailComponent);
   }
 
-  agregarProduct(product: Product) {
+  addProduct(product: Product) {
+    /*
     const existingProduct = this.dataSource.data.find(detail => detail.product.id === product.id);
     if (existingProduct) {
       existingProduct.quantity++;
@@ -188,23 +173,13 @@ export class PointOfSaleComponent {
     }
     this.dataSource._updateChangeSubscription();
     this.bard_code = null;
+    */
+    this._cartService.addToCart(product)
   }
-
-  addDetailInTable(saleDetail: SaleDetail) {
-    const d = this.dataSource.data;
-    saleDetail.quantity = 1;
-    d.push(saleDetail);
-    this.dataSource.data = d;
-  }
-
-
-  getTotalCost() {
-    return this.dataSource.data.map(t => t.price * t.quantity).reduce((acc, value) => acc + value, 0);
-  }
-
 
 
   //funcion que suma o resta la quantity de product
+  /*
   quantity(number: number, item: SaleDetail) {
 
     if (number === 1) {
@@ -218,10 +193,10 @@ export class PointOfSaleComponent {
     }
 
   }
-
+*/
   Sale() {
     let sale = new Sale;
-    sale.saleDetail = this.dataSource.data;
+    sale.saleDetail = this.saleDetail;
     sale.paymentMethod = this.paymentMethod;
     sale.account = JSON.parse(localStorage.getItem('currentUser'));
     this.saleService.registrar(sale).subscribe(data => {
@@ -234,7 +209,7 @@ export class PointOfSaleComponent {
 
   ProductGenericoDialog(product?: Product) {
     if (product?.salePrice) {
-      this.agregarProduct(product)
+      this.addProduct(product)
     }
     else {
       this.ListarProductsDeAccesoRapido();
