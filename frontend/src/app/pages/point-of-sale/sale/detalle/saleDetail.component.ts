@@ -18,7 +18,6 @@ export class SaleDetailComponent implements OnInit {
   }
 
   SendDetail(){
-    console.log(this.saleDetail)
     this.saleService.setDetalle(this.saleDetail)
     this.dialogRef.close()
   }

@@ -37,7 +37,6 @@ export class CategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //console.log(this.quantity)
     this.categoryService.listar().subscribe(data => {
       this.dataSource.data = data
     });

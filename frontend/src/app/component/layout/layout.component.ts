@@ -60,7 +60,7 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('selectedDriver'))
+
     moment.locale('es-mx');
 
     this.lightness.valueChanges

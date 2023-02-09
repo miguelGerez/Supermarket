@@ -116,7 +116,6 @@ export class InventoryEdicionComponent implements OnInit {
     Tambien Se consulta si es undefined para ver si es una modificacion o si se registra un product nuevo.
     Hay una diferencia en el backend para consultar si al registrar, ya existe el product en la base de datos.
     */
-    console.log(this.product)
 
     if (this.product == undefined) {
 
@@ -126,7 +125,6 @@ export class InventoryEdicionComponent implements OnInit {
     } else {
       this.modificar = false;
     }
-    console.log(this.modificar)
     this.Form()
     this.listarBrand();
     this.listarCategorys()
@@ -151,7 +149,6 @@ export class InventoryEdicionComponent implements OnInit {
   /*
     busqueda(){
       this.compreAhora.listBardCode(this.formGroup.controls['bard_code'].value).subscribe(data=>{
-        console.log(data.response.products)
       })
     }
 

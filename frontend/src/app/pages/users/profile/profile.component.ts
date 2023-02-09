@@ -46,7 +46,6 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log("perfil")
     this.data = this.accountService.getAccountEdition();
     if (this.data) {
       this.account = { ...this.data };

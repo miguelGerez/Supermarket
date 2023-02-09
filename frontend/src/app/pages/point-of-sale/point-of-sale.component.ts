@@ -79,7 +79,6 @@ export class PointOfSaleComponent {
 /*
     this.accountService.getAccountActivo().subscribe(data => {
       this.account = data
-      console.log(data)
     })
 
 
