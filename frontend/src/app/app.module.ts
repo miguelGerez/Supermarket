@@ -14,25 +14,23 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { ServerErrorsInterceptor } from './shared/server-errors.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ThermalPrintModule } from 'ng-thermal-print';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export function tokenGetter() {
   return sessionStorage.getItem(environment.TOKEN_NAME);
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-
-  ],
+  declarations: [AppComponent, LoginComponent],
   //entryComponents:[MedicoDialogComponent],
   imports: [
     BrowserModule,
@@ -44,6 +42,8 @@ export function tokenGetter() {
     MatDividerModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
     MatSnackBarModule,
     HttpClientModule,
     FormsModule,
@@ -56,7 +56,9 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
         allowedDomains: [environment.HOST.substring(7)],
-        disallowedRoutes: [`http://${environment.HOST.substring(7)}/login/enviarCorreo`],
+        disallowedRoutes: [
+          `http://${environment.HOST.substring(7)}/login/enviarCorreo`,
+        ],
       },
     }),
   ],
@@ -65,14 +67,10 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true,
-
-
-
     },
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntl }
-
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntl },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

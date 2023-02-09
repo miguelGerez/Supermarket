@@ -5,28 +5,42 @@
     <div class="flex-container">
       <div class="">
         <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">Login</h2>
+          <h2 class="heading-section">Bienvenido</h2>
+          <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </div>
       <div class="">
-          <div class="login-wrap p-0">
-            <form action="#" class="signin-form">
-              <div class="form-group">
+        <div class="login-wrap p-0">
+          <form action="#" class="signin-form">
+            <div class="form-group">
+              <!--
                 <input type="email" id="email" name="email" id="form2Example17" type="text"
-                  class="form-controle text-center" [(ngModel)]="account" placeholder="Usuario" required>
-              </div>
-              <div class="form-group">
+                  class="form-controle text-center"  placeholder="Usuario" required>
+-->
+              <mat-form-field appearance="outline" >
+                <mat-label>Mail</mat-label>
+                <input matInput  [(ngModel)]="account" id="email" name="email" type="text">
+                <mat-icon matSuffix fontIcon="email"></mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <!--
                 <input type="password" id="password" name="password" id="form2Example27" [(ngModel)]="clave"
                   class="form-controle text-center" placeholder="Password" required>
-                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-              </div>
-              <div class="form-group">
-                <button (click)="iniciarSesion()" type="submit"
-                  class="form-controle btn btn-primary submit px-3">Iniciar
-                  sesion</button>
-              </div>
+-->
+              <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput  [(ngModel)]="clave" name="password">
+                <mat-icon matSuffix fontIcon="key"></mat-icon>
+              </mat-form-field>
 
-            </form>
+            </div>
+            <div class="form-group">
+              <button (click)="iniciarSesion()" type="submit" mat-raised-button color="primary">Iniciar
+                sesion</button>
+            </div>
+
+          </form>
 
         </div>
       </div>
