@@ -10,14 +10,8 @@
 
     {{ account }}
 
-    <!---->
-    <button mat-icon-button (click)="print()">
-      <mat-icon>list</mat-icon>
-    </button>
-
-
- <button mat-icon-button (click)="requestUsb()">
-      <mat-icon>history</mat-icon>
+ <button color="accent" mat-icon-button disabled (click)="requestUsb()">
+      <mat-icon>print</mat-icon>
     </button>
 
     <button mat-icon-button [matMenuTriggerFor]="history" (click)="listSell()">

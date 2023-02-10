@@ -71,12 +71,24 @@ export class BrandChartComponent {
     let categories: Category[] = [];
     sales.forEach(sale => {
         sale.saleDetail.forEach(saleDetail => {
-            if (!categories.find(category => category?.id === saleDetail.product?.category?.id)
-                && saleDetail.product?.category?.name.trim() !== "") {
-                categories.push(saleDetail.product?.category);
+            if (saleDetail.product && saleDetail.product.category
+                && saleDetail.product.category.name.trim() !== "") {
+                let existingCategory = categories.find(category => category.id === saleDetail.product.category.id);
+                if (existingCategory) {
+                    existingCategory.quantity += saleDetail.quantity;
+                } else {
+                    let newCategory = {
+                        id: saleDetail.product.category.id,
+                        name: saleDetail.product.category.name,
+                        quantity: saleDetail.quantity
+                    };
+                    categories.push(newCategory);
+                }
             }
         });
     });
+    categories.sort((a, b) => a.name.localeCompare(b.name));
+    console.log(categories)
     return categories;
 }
 

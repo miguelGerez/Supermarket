@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Product } from '../_model/product';
-import { Subject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { shareReplay, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +13,26 @@ export class ProductService {
   productEdicion: Product;
   ProductCambio = new Subject<Product[]>();
   MensajeCambio = new Subject<string>();
+  private products$: Observable<Product[]>;
 
   private url: string = `${environment.HOST}/product`
 
   constructor(private http: HttpClient) {
   }
 
-  listar() {
-    return this.http.get<Product[]>(this.url);
+  private cache = new Map<string, Product[]>();
+
+  list(): Observable<Product[]> {
+    if (this.cache.has('products')) {
+      return of(this.cache.get('products'));
+    } else {
+      return this.http.get<Product[]>(this.url)
+        .pipe(
+          tap(products => this.cache.set('products', products))
+        );
+    }
   }
+
 
   listarPorId(id: number) {
     return this.http.get<Product>(`${this.url}/${id}`);

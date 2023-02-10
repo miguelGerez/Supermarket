@@ -5,7 +5,25 @@
 
 }
 
-table{
-  max-height: 500px;
-  overflow: auto;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #ddd;
+}
+
+@media screen and (max-width: 600px) {
+  td, th {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
 }

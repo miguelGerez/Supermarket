@@ -1,10 +1,10 @@
-<mat-card >
+<mat-card>
   <mat-card-subtitle>Elija una categoria</mat-card-subtitle>
   <mat-form-field appearance="outline" floatLabel="always">
-    <mat-label>Brand</mat-label>
-    <mat-select (selectionChange)="CategoryChanges($event.value)">
+    <mat-label>Categoria</mat-label>
+    <mat-select value="cigarros" (selectionChange)="CategoryChanges($event.value)">
       <mat-option [value]="option" *ngFor="let option of category">
-        {{ option?.name }}
+        {{ option?.name }}  ({{ option?.quantity }})
       </mat-option>
     </mat-select>
   </mat-form-field>

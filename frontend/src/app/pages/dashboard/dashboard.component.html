@@ -8,22 +8,27 @@
   </mat-select>
 </mat-form-field>
 -->
-<mat-form-field style="font-size: 14px" appearance="outline">
-  <mat-label>DD/MM/AAAA</mat-label>
-  <input matInput [matDatepicker]="picker" (dateChange)="salePorFecha($event.value)">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+<header>
+  <mat-form-field style="font-size: 14px" appearance="outline">
+    <mat-label>Elija una fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [value]="initialDate" (dateChange)="salePorFecha($event.value)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker  #picker></mat-datepicker>
+  </mat-form-field>
+</header>
+
 <div class="flex-container " *ngIf="dataSource">
-  <div class="flex-table">
-    <app-sale-table [data]="dataSource"></app-sale-table>
-  </div>
-  <div class="grid-chart">
 
 
-      <mat-card class="mat-elevation-z8 caja">
-        <p class="mat-headline-3">Caja: ${{total}}</p>
-        <p class="mat-h4">{{dataSource?.length}} ventas realizadas</p>
+  <app-sale-table [data]="dataSource"></app-sale-table>
+
+
+      <mat-card class="mat-elevation-z8">
+        <mat-card-content>
+          <p class="mat-headline-3">Caja: ${{total}}</p>
+          <p class="mat-h4">{{dataSource?.length}} ventas realizadas</p>
+        </mat-card-content>
+
       </mat-card>
 
 
@@ -33,20 +38,7 @@
       <app-brand-chart [data]="dataSource"></app-brand-chart>
 
   </div>
-</div>
 
-<div class="row pantalla">
-  <div class="col-6">
+<div class="flex-container-2">
     <annual-chart></annual-chart>
-  </div>
-  <div class="col-6">
-    <mat-card>
-      <mat-card-title>
-        Ventas mensuales
-      </mat-card-title>
-      <mat-card-content>
-        <app-monthly-chart></app-monthly-chart>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>

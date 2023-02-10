@@ -24,6 +24,8 @@ import { Local } from 'src/app/_model/local';
 
 export class DashboardComponent implements PipeTransform {
 
+  initialDate = new Date
+
   displayedColumns: string[] = ['quantity', 'total', 'date', 'paymentMethod', 'account', 'acciones'];
   dataSource!: Sale[];
 
@@ -121,6 +123,7 @@ export class DashboardComponent implements PipeTransform {
     this.saleService.listByDate(moment(date).format('YYYY-MM-DD')).subscribe(data => {
       if (data.length === 0) {
         this.mensajeService.mensaje("No existen ventas en la fecha seleccionada")
+        this.dataSource = null
       }
       else {
         this.dataSource = data

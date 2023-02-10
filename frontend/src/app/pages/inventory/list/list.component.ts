@@ -116,7 +116,7 @@ export class InventoryListarComponent implements OnInit {
       this.brands = data
       this.filteredBrand = this.brands.slice();
     })
-    this.filteredStates = this.productService.listar()
+    this.filteredStates = this.productService.list()
   }
 
 
@@ -161,7 +161,7 @@ export class InventoryListarComponent implements OnInit {
 
   eliminarProduct(id: number, name: string) {
     this.productService.eliminar(id).subscribe(() =>
-      this.productService.listar().subscribe((data) => {
+      this.productService.list().subscribe((data) => {
         this.dataSource = new MatTableDataSource(data);
         this.productService.setMensajeCambio(
           'Se elimino correctamente ' + name
@@ -187,7 +187,7 @@ export class InventoryListarComponent implements OnInit {
   }
 
   listarProducts() {
-    this.productService.listar().subscribe((data) => {
+    this.productService.list().subscribe((data) => {
       this.crearTablaProduct(data);
       this.dateConsulta = new Date();
     });

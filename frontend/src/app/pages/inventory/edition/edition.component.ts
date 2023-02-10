@@ -257,11 +257,7 @@ export class InventoryEdicionComponent implements OnInit {
     })
   }
 
-  ListarCambio() {
-    this.productService.listar().subscribe(data => {
-      this.productService.setProductCambio(data)
-    })
-  }
+
 
   mensaje(message: string, action: string) {
     this.snackBar.open(message, action, {

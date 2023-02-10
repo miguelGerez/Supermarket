@@ -27,7 +27,7 @@ export class AnnualChartComponent implements OnInit {
   };
 
   public lineChartOptions: ChartOptions<'line'> = {
-    responsive: false,
+    responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
