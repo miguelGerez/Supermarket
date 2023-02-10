@@ -1,38 +1,27 @@
 <form novalidate [formGroup]="formGroup" (ngSubmit)="operar()" #f="ngForm">
-  <div class="grid-flexbox">
-    <div class="flex-item1">
-      <div class="header">
+  <div class="header">
 
-      <div class="chill1">
+    <div class="chill1">
 
 
-        <p class="text-center mat-body">{{account.username}} {{account.last_name}}</p>
-
-
-      </div>
-      <div class="buttons">
-        <button mat-raised-button color="accent" type="submit">
-          <mat-icon>save</mat-icon>
-          Guardar
-        </button>
-        <button mat-raised-button color="accent">
-          <mat-icon>key</mat-icon>
-          Cambiar clave
-        </button>
-
-      </div>
-
-      </div>
-
-
-      <div *ngIf="modificar">
-
-      </div>
 
 
     </div>
+    <div class="buttons">
+      <button mat-raised-button color="accent" type="submit">
+        <mat-icon>save</mat-icon>
+        Guardar
+      </button>
+      <button mat-raised-button color="accent">
+        <mat-icon>key</mat-icon>
+        Cambiar clave
+      </button>
 
-    <div class="flex-item2">
+    </div>
+
+  </div>
+
+  <div class="container">
 
       <mat-accordion multi>
         <mat-expansion-panel expanded>
@@ -42,17 +31,17 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Usuario</mat-label>
-              <input matInput formControlName="username">
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username">
+          </mat-form-field>
 
-            <div *ngIf="!modificar">
-              <mat-form-field appearance="outline">
-                <mat-label>Contraseña</mat-label>
-                <input matInput placeholder="Contraseña" formControlName="password">
-              </mat-form-field>
-            </div>
+          <div *ngIf="!modificar">
+            <mat-form-field appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <input matInput placeholder="Contraseña" formControlName="password">
+            </mat-form-field>
+          </div>
 
         </mat-expansion-panel>
 
@@ -63,40 +52,39 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Nombre</mat-label>
-              <input matInput placeholder="Nombres" formControlName="name">
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombres" formControlName="name">
+          </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Apellido</mat-label>
-              <input matInput formControlName="last_name">
-            </mat-form-field>
-
-
-            <mat-form-field appearance="outline">
-              <mat-label>Correo</mat-label>
-              <input formControlName="email" matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Direccion</mat-label>
-              <input formControlName="address" matInput>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-              <mat-label>Altura</mat-label>
-              <input formControlName="height" matInput>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="last_name">
+          </mat-form-field>
 
 
+          <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input formControlName="email" matInput>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Telefono</mat-label>
-              <input formControlName="phone" matInput>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Direccion</mat-label>
+            <input formControlName="address" matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Altura</mat-label>
+            <input formControlName="height" matInput>
+          </mat-form-field>
+
+
+
+          <mat-form-field appearance="outline">
+            <mat-label>Telefono</mat-label>
+            <input formControlName="phone" matInput>
+          </mat-form-field>
         </mat-expansion-panel>
-
 
         <mat-expansion-panel expanded>
           <mat-expansion-panel-header disabled>
@@ -116,6 +104,6 @@
       </mat-accordion>
 
     </div>
-  </div>
+
 
 </form>
