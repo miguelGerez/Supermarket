@@ -70,3 +70,7 @@ header{
   align-items: center;
   justify-content: center;
 }
+
+.filter{
+  align-self: flex-start;
+}

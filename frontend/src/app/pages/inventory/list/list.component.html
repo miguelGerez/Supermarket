@@ -1,6 +1,11 @@
 <div class="flex-container">
   <header>
     <div class="menu">
+      <mat-form-field class="filter"
+       *ngIf="dataSource.data.length" class="filtro" appearance="fill">
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Jabon" #input>
+      </mat-form-field>
 
       <mat-chip-listbox>
         <mat-chip color="primary" selected *ngIf="brandSeleccionada">
@@ -108,10 +113,7 @@
     </div>
   </header>
   <div class="tabla w-75 flex-item2">
-    <mat-form-field *ngIf="dataSource.data.length" class="filtro" appearance="fill">
-      <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Jabon" #input>
-    </mat-form-field>
+
 
     <mat-card class="h-100">
       <table mat-table class="w-100 h-100 border " *ngIf="dataSource.data.length" [dataSource]="dataSource" matSort
