@@ -1,5 +1,14 @@
 # Supermarket
+
 Este repositorio contiene un proyecto de supermercado dividido en dos partes: un backend hecho con Java y Spring, y un frontend hecho con Angular.
+
+Demo:  [supermarket.dalquin.com.ar](https://supermarket.dalquin.com.ar)
+
+
+**usuario: admin**
+
+**contraseña: admin**
+
 ## Backend
 
 El backend está construido con Java y Spring, y proporciona una API RESTful para el frontend. Se utiliza una base de datos PostgreSQL para almacenar la información de los productos y clientes.
