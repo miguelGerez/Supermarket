@@ -1,47 +1,48 @@
 # Supermarket
-##Backend
-Requisitos
+Este repositorio contiene un proyecto de supermercado dividido en dos partes: un backend hecho con Java y Spring, y un frontend hecho con Angular.
+## Backend
+
+El backend está construido con Java y Spring, y proporciona una API RESTful para el frontend. Se utiliza una base de datos PostgreSQL para almacenar la información de los productos y clientes.
+
+### Requisitos
 Java 11 o superior
 Maven
 PostgreSQL
-Instalación
-Clonar el repositorio desde GitHub mediante el comando git clone https://github.com/<tu-usuario>/supermercado.git.
 
-Abrir el proyecto en un IDE de Java, como Eclipse o IntelliJ.
+### Instalación
+
+Se recomienda utilizar Spring tools para abrir el proyecto. 
 
 Configurar la base de datos PostgreSQL en el archivo application.properties. Puedes utilizar los siguientes valores:
 
-**
-spring.datasource.url=jdbc:postgresql://localhost:5432/supermercado
-spring.datasource.username=usuario
-spring.datasource.password=contraseña
-**
+**spring.datasource.url=jdbc:postgresql://localhost:5432/supermercado**
+  
+**spring.datasource.username=usuario**
+  
+**spring.datasource.password=contraseña**
+
 Donde usuario y contraseña son los valores de acceso a la base de datos que hayas configurado previamente.
-
-Configuración
-Para configurar el proyecto, no es necesario realizar ninguna acción adicional. Las configuraciones por defecto ya son suficientes para ejecutar el backend.
-
-Ejecución
-Para ejecutar el backend en un servidor local, sigue los siguientes pasos:
 
 Abre una terminal en el directorio raíz del proyecto.
 
 Ejecuta el comando mvn spring-boot:run.
 
-##Frontend
-Requisitos
+## Frontend
+  
+ El frontend está construido con Angular, y se comunica con el backend mediante la API RESTful.
+ 
+ Entre las principales funcionalidades del frontend se encuentran:
+
+* Visualización de la lista de productos y clientes
+* Creación, edición y eliminación de productos y clientes
+* Búsqueda de productos por nombre o código de barras
+* Dashboard con las ventas realizadas
+* Puesto de ventas
+  
+### Requisitos
 Node.js
 Angular CLI
-Instalación
-Clonar el repositorio desde GitHub mediante el comando git clone https://github.com/<tu-usuario>/supermercado.git.
-Abrir una terminal en el directorio frontend.
-Ejecutar el comando npm install para instalar las dependencias del proyecto.
-Configuración
-Para configurar el proyecto, no es necesario realizar ninguna acción adicional. Las configuraciones por defecto ya son suficientes para ejecutar el frontend.
-
-Ejecución
-Para ejecutar el frontend en un servidor local, sigue los siguientes pasos:
-
-Abre una terminal en el directorio frontend.
-
-Ejecuta el comando ng serve.
+### Instalación
+  
+1. Ejecutar el comando npm install para instalar las dependencias del proyecto.
+2. Ejecuta el comando ng serve.
