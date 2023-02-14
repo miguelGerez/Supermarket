@@ -1,0 +1,19 @@
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+
+
+mat-tab-group{
+  margin: 1rem;
+  height: 100%;
+  max-width: 800px; /* Establece el ancho máximo del mat-tab-group */
+  margin: 0 auto; /* Centra el mat-tab-group en la página */
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%; /* Asegura que el contenedor ocupe todo el alto disponible */
+  flex-wrap: wrap;
+}

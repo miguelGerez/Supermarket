@@ -1,4 +1,28 @@
 .table-container{
-  max-height: calc(100vh - 350px);
+  max-height: 300px;
   overflow: auto;
+}
+
+mat-card{
+  max-height: 500px;
+  max-width: 600px; /* Establece el ancho máximo del mat-card */
+  width: 600px; /* Asegura que el mat-card se ajuste al ancho del contenedor */
+  padding: 20px; /* Agrega un espacio alrededor del contenido */
+}
+
+
+.flex-container-buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-card-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+mat-form-field{
+  width: 50%;
 }
