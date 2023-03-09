@@ -1,0 +1,17 @@
+form{
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+mat-form-field{
+  margin: 1rem;
+}
+
+.action-container{
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  width: 50%;
+}

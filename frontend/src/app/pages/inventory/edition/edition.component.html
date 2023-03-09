@@ -76,12 +76,14 @@
               <input matInput formControlName="bard_code" />
             </mat-form-field>
 
+            <mat-form-field appearance="outline" floatLabel="always">
+              <textarea formControlName="descripcion" matInput></textarea>
+              <mat-label>Descripción</mat-label>
+            </mat-form-field>
+
           </div>
 
-          <mat-form-field appearance="outline" floatLabel="always" class="w-75">
-            <textarea formControlName="descripcion" matInput></textarea>
-            <mat-label>Descripción</mat-label>
-          </mat-form-field>
+
 
 
         </mat-expansion-panel>
@@ -114,7 +116,7 @@
 
             <mat-form-field floatLabel="always" class="fix-suffix" appearance="outline">
               <mat-label>Ganancia</mat-label>
-              <input (change)="priceFinal()" formControlName="salePrice" matInput />
+              <input (change)="priceFinal()" formControlName="gain" matInput />
               <span matPrefix>%</span>
             </mat-form-field>
 

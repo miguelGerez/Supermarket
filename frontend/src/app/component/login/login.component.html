@@ -3,6 +3,8 @@
 
   <section class="ftco-section">
     <div class="flex-container">
+      <mat-card class=" p-3 mat-elevation-z16 login">
+
       <div class="">
         <div class="col-md-6 text-center mb-5">
           <h2 class="heading-section">Bienvenido</h2>
@@ -10,30 +12,23 @@
         </div>
       </div>
       <div class="">
-        <div class="login-wrap p-0">
           <form action="#" class="signin-form">
             <div class="form-group">
-              <!--
-                <input type="email" id="email" name="email" id="form2Example17" type="text"
-                  class="form-controle text-center"  placeholder="Usuario" required>
--->
-              <mat-form-field appearance="outline" >
+
+              <mat-form-field appearance="outline">
                 <mat-label>Mail</mat-label>
-                <input matInput  [(ngModel)]="account" id="email" name="email" type="text">
+                <input matInput [(ngModel)]="account" id="email" name="email" type="text">
                 <mat-icon matSuffix fontIcon="email"></mat-icon>
               </mat-form-field>
             </div>
             <div class="form-group">
-              <!--
-                <input type="password" id="password" name="password" id="form2Example27" [(ngModel)]="clave"
-                  class="form-controle text-center" placeholder="Password" required>
--->
               <mat-form-field appearance="outline">
                 <mat-label>Contraseña</mat-label>
-                <input matInput  [(ngModel)]="clave" name="password">
-                <mat-icon matSuffix fontIcon="key"></mat-icon>
+                <input matInput [(ngModel)]="clave" [type]="showPassword ? 'text' : 'password'" name="password">
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                  {{showPassword?'visibility_off':'visibility'}}
+                </mat-icon>
               </mat-form-field>
-
             </div>
             <div class="form-group">
               <button (click)="iniciarSesion()" type="submit" mat-raised-button color="primary">Iniciar
@@ -42,8 +37,9 @@
 
           </form>
 
-        </div>
       </div>
+    </mat-card>
+
     </div>
   </section>
 </div>

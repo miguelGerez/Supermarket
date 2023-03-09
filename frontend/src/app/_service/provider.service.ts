@@ -21,11 +21,11 @@ export class ProviderService {
     return this.http.get<Provider[]>(this.url);
   }
 
-  listarProductPorProvider(id: number) {
+  listarProviderPorProvider(id: number) {
     return this.http.get<Provider[]>(`${this.url}/proovedor/${id}`);
   }
 
-  listarCantidadDeProductsPorId(id: number) {
+  listarCantidadDeProvidersPorId(id: number) {
     return this.http.get<number>(`${this.url}/quantityPorId/${id}`);
   }
 
@@ -45,5 +45,12 @@ export class ProviderService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
+  setProviderCambio(lista: Provider[]){
+    this.ProviderCambio.next(lista);
+  }
+
+  getProviderCambio(){
+    return this.ProviderCambio.asObservable();
+  }
 
 }

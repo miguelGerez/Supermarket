@@ -4,12 +4,10 @@ import { Component, PipeTransform, ViewChild } from '@angular/core';
 import { Sale } from 'src/app/_model/sale';
 import { SaleService } from 'src/app/_service/sale.service';
 import * as moment from 'moment';
-import { MatDialog } from '@angular/material/dialog';
 import { MensajeService } from 'src/app/_service/mensajes.service';
 import { ChartConfiguration, ChartOptions, Chart, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { SaleDetail } from 'src/app/_model/saleDetail';
-import { SaleDetalleComponent } from '../point-of-sale/saleDetail/saleDetail.component';
 import { Observable } from 'rxjs';
 import { LocalService } from 'src/app/_service/local.service';
 import { Local } from 'src/app/_model/local';
@@ -37,6 +35,8 @@ export class DashboardComponent implements PipeTransform {
 
   label: string[] = []
   data: number[] = []
+
+
 
   transform(value: Date | moment.Moment, dateFormat: string): any {
 

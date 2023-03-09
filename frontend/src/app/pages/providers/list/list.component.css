@@ -1,0 +1,13 @@
+.list{
+  width: 300px;
+}
+
+mat-card-title{
+  margin: 1rem;
+}
+
+mat-card-actions{
+  display: flex;
+  justify-content: end;
+  margin: 0.5rem;
+}

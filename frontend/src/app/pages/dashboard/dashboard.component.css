@@ -1,3 +1,4 @@
+/*
 .title {
   font-size: 2vw;
   color: #3077d3;
@@ -5,21 +6,12 @@
 .subtitle {
   color: #9e9e9e;
 }
-/*
-.flex-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: 1fr;
-  gap: 10px 10px;
-  align-content: start;
-  justify-items: stretch;
-}
-*/
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
 }
 
 .flex-container > *{
@@ -50,9 +42,7 @@ justify-content: space-around;
   margin: 2%;
 }
 
-header{
-  margin: 1rem;
-}
+
 
 .flex-container-2{
   display: flex;
@@ -63,12 +53,6 @@ header{
 .flex-container-2 > *{
   margin: 1rem;
 }
-
-
-
-
-
-/*borrar de aca*/
 
 mat-card {
   width: 300px;
@@ -95,4 +79,15 @@ p {
 
 app-sale-table{
   flex-shrink: 1;
+}
+*/
+
+app-sale-table{
+  width: 100%;
+  margin: 0.7rem;
+}
+
+
+header{
+  margin: 1rem;
 }

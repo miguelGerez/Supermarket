@@ -1,3 +1,4 @@
+import { EditionComponent } from './../../providers/edition/edition.component';
 import { AfterViewInit, Component, HostListener, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -20,6 +21,7 @@ import { MensajeService } from 'src/app/_service/mensajes.service';
 import { ProductService } from 'src/app/_service/product.service';
 import { ProviderService } from 'src/app/_service/provider.service';
 import { BrandService } from 'src/app/_service/marca.service';
+import { InventoryEdicionComponent } from '../edition/edition.component';
 
 @Component({
   selector: 'app-inventory-listar',
@@ -213,7 +215,7 @@ export class InventoryListarComponent implements OnInit {
   }
 
   listarPorProvideres() {
-    this.productService.listarProductPorProvider(this.ProviderSeleccionado.idProvider).subscribe(data => {
+    this.productService.listarProductPorProvider(this.ProviderSeleccionado.id).subscribe(data => {
       this.crearTablaProduct(data);
     })
   }
@@ -240,8 +242,11 @@ export class InventoryListarComponent implements OnInit {
   }
 
   openDialogEdicionProduct(product?: Product) {
-    this.productService.productEdicion = product
-    this.router.navigateByUrl('pages/inventario/producto')
+    //this.productService.productEdicion = product
+    //this.router.navigateByUrl('pages/inventario/producto')
+    this.dialog.open(InventoryEdicionComponent, {
+      data: product
+    })
   }
 
   exportarExcel() {

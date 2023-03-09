@@ -24,6 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 export function tokenGetter() {
   return sessionStorage.getItem(environment.TOKEN_NAME);
@@ -51,6 +52,7 @@ export function tokenGetter() {
     MatTooltipModule,
     ThermalPrintModule,
     MatDialogModule,
+    MatCardModule,
     ThermalPrintModule,
     JwtModule.forRoot({
       config: {

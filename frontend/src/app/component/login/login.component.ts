@@ -18,9 +18,16 @@ export class LoginComponent implements OnInit {
 
   isLoading = false;
 
+  public showPassword: boolean = false;
+
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 
   iniciarSesion() {
 

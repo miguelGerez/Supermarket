@@ -27,14 +27,22 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.exceptionHandling().authenticationEntryPoint(new AuthException()).and().requestMatchers().and()
-				.authorizeRequests().antMatchers("/v2/api-docs/**").permitAll().antMatchers("/v3/api-docs/**")
-				.permitAll().antMatchers("/especialidad/**").authenticated().antMatchers("//**").authenticated()
-				.antMatchers("/doctores/**").authenticated().antMatchers("/turno/**").authenticated()
-				.antMatchers("/horarios/**").authenticated().antMatchers("/tokens/anular/**").permitAll()
-				.antMatchers("/tokens/**").authenticated().antMatchers("/login/**").permitAll()
-				.antMatchers("/profesional/**").authenticated();
-
+	    http.exceptionHandling().authenticationEntryPoint(new AuthException()).and()
+	        .requestMatchers().and()
+	        .authorizeRequests()
+	            .antMatchers("/v2/api-docs/**").permitAll()
+	            .antMatchers("/v3/api-docs/**").permitAll()
+	            .antMatchers("/especialidad/**").authenticated()
+	            .antMatchers("/**").authenticated()
+	            .antMatchers("/inventario/**").authenticated()
+	            .antMatchers("/usuarios/**").authenticated()
+	            .antMatchers("/configuracion/**").authenticated()
+	            .antMatchers("/etiquetas/**").authenticated()
+	            .antMatchers("/horarios/**").authenticated()
+	            .antMatchers("/tokens/anular/**").permitAll()
+	            .antMatchers("/tokens/**").authenticated()
+	            .antMatchers("/pages/**").authenticated()
+	            .antMatchers("/login/**").permitAll();
 	}
 
 }

@@ -1,6 +1,6 @@
 <mat-card class="mat-elevation-z8 h-100">
   <mat-card-title>
-    <h1 class="mat-h1 text-center">Listado de sales</h1>
+    <h1 class="mat-h1 text-center">Listado de ventas</h1>
   </mat-card-title>
   <div class="contenedor">
 
@@ -8,27 +8,27 @@
     <table mat-table [dataSource]="data" class="w-100">
 
       <ng-container matColumnDef="quantity">
-        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <th mat-header-cell *matHeaderCellDef> cantidad </th>
         <td mat-cell *matCellDef="let element"> {{element.saleDetail.length}} </td>
       </ng-container>
 
       <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef> Total </th>
+        <th mat-header-cell *matHeaderCellDef> total </th>
         <td mat-cell *matCellDef="let element"> {{getTotalDetalle(element) | currency}} </td>
       </ng-container>
 
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> date </th>
+        <th mat-header-cell *matHeaderCellDef> fecha </th>
         <td mat-cell *matCellDef="let element">{{momentTooltip(element.date)}}</td>
       </ng-container>
 
       <ng-container matColumnDef="paymentMethod">
-        <th mat-header-cell *matHeaderCellDef> Metodo de pago </th>
+        <th mat-header-cell *matHeaderCellDef> metodo de pago </th>
         <td mat-cell *matCellDef="let element">{{element.paymentMethod?.name}}</td>
       </ng-container>
 
       <ng-container matColumnDef="account">
-        <th mat-header-cell *matHeaderCellDef> account </th>
+        <th mat-header-cell *matHeaderCellDef> usuario </th>
         <td mat-cell *matCellDef="let element">{{element.account?.username}}</td>
       </ng-container>
 

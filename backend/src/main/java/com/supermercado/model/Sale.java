@@ -40,6 +40,10 @@ public class Sale {
 	@JsonIgnore
 	@OneToMany(mappedBy = "account")
 	private List<Sale> sales;
+	
+	@ManyToOne
+    @JoinColumn(name = "local_id")
+    private Local local;
 
 	public Integer getId() {
 		return id;

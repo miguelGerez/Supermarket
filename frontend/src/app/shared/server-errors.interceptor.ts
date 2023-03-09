@@ -74,7 +74,18 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
               duration: 5000,
             });
             console.log(err);
-          } else {
+          }
+
+         else if (err.status === 0) {
+          this.snackBar.open(
+            'No se pudo establecer una conexión con el servidor.',
+            'ERROR',
+            { duration: 5000 }
+          );
+        }
+
+           else {
+            console.log(err.status)
             this.snackBar.open(
               'Verifique su conexion con el servidor',
               'ERROR',

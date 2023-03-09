@@ -36,7 +36,6 @@ export class InventoryEdicionComponent implements OnInit {
 
   categorys!: Category[]
   brands!: Brand[]
-  data = new Product;
 
   filteredBrand = new Array;
   filteredCategory = new Array;
@@ -63,15 +62,13 @@ export class InventoryEdicionComponent implements OnInit {
 
   //@Input()  product = new Product; // decorate the property with @Input()
   constructor(
-    //private dialogRef: MatDialogRef<InventoryEdicionComponent>,
-    //@Inject(MAT_DIALOG_DATA) private data: Product,
+    private dialogRef: MatDialogRef<InventoryEdicionComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: Product,
     private productService: ProductService,
     private categoryService: CategoryService,
     private brandService: BrandService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private activateRoute: ActivatedRoute,
-    private location: Location,
     private router: Router,
     private _loading: LoadingService,
     private formBuilder: FormBuilder,
@@ -85,7 +82,7 @@ export class InventoryEdicionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.product = {...this.data}
     this.providers$ = this.proovedorService.listar();
 
     this.barCodeObservable$ = this.bardCodeService.getMensajeCambio();
@@ -159,6 +156,7 @@ export class InventoryEdicionComponent implements OnInit {
       name: [this.product.name, Validators.required],
       brand: [this.product.brand],
       salePrice: [this.product.salePrice],
+      gain: [this.product.gain],
       purchasePrice: [this.product.purchasePrice,],
       bard_code: [this.product.bard_code],
       descripcion: [this.product.descripcion],
@@ -170,13 +168,14 @@ export class InventoryEdicionComponent implements OnInit {
       modify_uptime: [this.product.modify_uptime],
       price_uptime: [this.product.price_uptime],
       providers: [this.product.providers],
+
     })
   }
 
   compareObjects(o1: any, o2: any): boolean {
     return (
       o1.name === o2.name &&
-      o1.idProvider === o2.idProvider
+      o1.id === o2.id
     );
   }
 
@@ -205,10 +204,10 @@ export class InventoryEdicionComponent implements OnInit {
 
   priceFinal() {
     let purchasePrice: number = this.formGroup.controls['purchasePrice'].value
-    let salePrice: number = this.formGroup.controls['salePrice'].value
+    let gain: number = this.formGroup.controls['gain'].value
 
-    if (purchasePrice && salePrice) {
-      let porcentaje = (purchasePrice * salePrice) / 100
+    if (purchasePrice && gain) {
+      let porcentaje = (purchasePrice * gain) / 100
       this.formGroup.controls.salePrice.setValue((Number(purchasePrice) + porcentaje).toFixed(2));
     }
 
@@ -220,7 +219,8 @@ export class InventoryEdicionComponent implements OnInit {
       if (this.modificar) {
         this.productService.registrar(product).subscribe(() => {
           this.mensaje("Se agrego " + this.formGroup.controls['name'].value, "")
-          this.router.navigateByUrl('pages/inventario/listar')
+          //this.router.navigateByUrl('pages/inventario/listar')
+          this.dialogRef.close()
         }
         );
 
@@ -229,7 +229,8 @@ export class InventoryEdicionComponent implements OnInit {
 
         this.productService.modificar(product).subscribe(() => {
           this.mensaje("Se modifico " + this.formGroup.controls['name'].value, "")
-          this.router.navigateByUrl('pages/inventario/listar')
+          //this.router.navigateByUrl('pages/inventario/listar')
+          this.dialogRef.close()
 
         }
         );

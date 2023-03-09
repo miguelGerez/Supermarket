@@ -1,4 +1,6 @@
 export class Provider {
-  idProvider: number;
+  id: number;
   name!: string;
+  phone!: string;
+  mail!: string;
 }

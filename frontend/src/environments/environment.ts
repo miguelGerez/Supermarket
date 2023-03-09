@@ -9,7 +9,7 @@ export const environment = {
   TOKEN_AUTH_PASSWORD: 'mito89codex',
   TOKEN_NAME: 'access_token',
   REFRESH_TOKEN: 'refresh_token',
-  REINTENTOS: 0,
+  REINTENTOS: 4,
   MICRO_CRUD: 'micro-crud',
   MICRO_CR: 'micro-cr',
   MICRO_AUTH: 'uaa'

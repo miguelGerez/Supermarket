@@ -16,28 +16,51 @@
     <mat-datepicker  #picker></mat-datepicker>
   </mat-form-field>
 </header>
+<!--<div class="flex-container " *ngIf="dataSource">-->
 
-<div class="flex-container " *ngIf="dataSource">
+<mat-grid-list cols="6" *ngIf="dataSource" >
+  <mat-grid-tile colspan="2" rowspan="2">
+    <app-sale-table [data]="dataSource"></app-sale-table>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+    <mat-card class="mat-elevation-z8">
+      <mat-card-content>
+        <p class="mat-headline-3">Caja: ${{total}}</p>
+        <p class="mat-h4">{{dataSource?.length}} ventas realizadas</p>
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="1">
+    <app-schedule-chart [data]="dataSource"></app-schedule-chart>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="1">
+    <app-account-chart [data]="dataSource"></app-account-chart>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="1">
+    <app-payment-method-chart [data]="dataSource"></app-payment-method-chart>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1" rowspan="1">
+    <app-brand-chart [data]="dataSource"></app-brand-chart>
+  </mat-grid-tile>
+
+</mat-grid-list>
 
 
-  <app-sale-table [data]="dataSource"></app-sale-table>
 
 
-      <mat-card class="mat-elevation-z8">
-        <mat-card-content>
-          <p class="mat-headline-3">Caja: ${{total}}</p>
-          <p class="mat-h4">{{dataSource?.length}} ventas realizadas</p>
-        </mat-card-content>
 
-      </mat-card>
-
-
-      <app-schedule-chart [data]="dataSource"></app-schedule-chart>
-      <app-account-chart [data]="dataSource"></app-account-chart>
-      <app-payment-method-chart [data]="dataSource"></app-payment-method-chart>
-      <app-brand-chart [data]="dataSource"></app-brand-chart>
-
-  </div>
+<!--
+    </div>
+-->
 
 <div class="flex-container-2">
     <annual-chart></annual-chart>

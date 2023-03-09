@@ -16,43 +16,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Product {
+public class Box {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	private String name;
-
-	private BigDecimal purchasePrice;
-
-	private BigDecimal salePrice;
-
-	private String descripcion;
-
+	
 	@Column(unique = true, nullable = true)
 	private String bard_code;
+	
+	private String name;
 
-	private BigDecimal profit;
+	 @OneToOne
+	 @JoinColumn(name = "product_box")
+	 private Product product;
+	 
+	 private BigDecimal purchasePrice;
 
-	private String netContent;
-
-	private Boolean quickAccess;
+	private BigDecimal salePrice;
+	
+	private Integer gain;
 
 	private LocalDateTime priceUptime;
 
 	private LocalDateTime modifyUptime;
-
-	private Integer gain;
-
-	@ManyToOne()
-	@JoinColumn(name = "brand_id")
-	private Brand brand;
-
-	@ManyToOne()
-	@JoinColumn(name = "payment_method_id")
-	private PaymentMethod paymentMethod;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -60,13 +48,14 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "classification_id")
 	private Classification classification;
-
+	
 	@ManyToMany
 	@JoinTable(name = "product_provider", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "provider_id"))
 	private Set<Provider> providers;
 	
-	@OneToOne(mappedBy = "product")
-    private Box box;
+	private String descripcion;
+
+	private BigDecimal profit;
 
 	public Integer getId() {
 		return id;
@@ -76,12 +65,28 @@ public class Product {
 		this.id = id;
 	}
 
+	public String getBard_code() {
+		return bard_code;
+	}
+
+	public void setBard_code(String bard_code) {
+		this.bard_code = bard_code;
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public BigDecimal getPurchasePrice() {
@@ -100,44 +105,12 @@ public class Product {
 		this.salePrice = salePrice;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public Integer getGain() {
+		return gain;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public String getBard_code() {
-		return bard_code;
-	}
-
-	public void setBard_code(String bard_code) {
-		this.bard_code = bard_code;
-	}
-
-	public BigDecimal getProfit() {
-		return profit;
-	}
-
-	public void setProfit(BigDecimal profit) {
-		this.profit = profit;
-	}
-
-	public String getNetContent() {
-		return netContent;
-	}
-
-	public void setNetContent(String netContent) {
-		this.netContent = netContent;
-	}
-
-	public Boolean getQuickAccess() {
-		return quickAccess;
-	}
-
-	public void setQuickAccess(Boolean quickAccess) {
-		this.quickAccess = quickAccess;
+	public void setGain(Integer gain) {
+		this.gain = gain;
 	}
 
 	public LocalDateTime getPriceUptime() {
@@ -156,22 +129,6 @@ public class Product {
 		this.modifyUptime = modifyUptime;
 	}
 
-	public Brand getBrand() {
-		return brand;
-	}
-
-	public void setBrand(Brand brand) {
-		this.brand = brand;
-	}
-
-	public PaymentMethod getPaymentMethod() {
-		return paymentMethod;
-	}
-
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
 	public Category getCategory() {
 		return category;
 	}
@@ -188,16 +145,6 @@ public class Product {
 		this.classification = classification;
 	}
 
-	
-	
-	public Integer getGain() {
-		return gain;
-	}
-
-	public void setGain(Integer gain) {
-		this.gain = gain;
-	}
-
 	public Set<Provider> getProviders() {
 		return providers;
 	}
@@ -206,14 +153,22 @@ public class Product {
 		this.providers = providers;
 	}
 
-	public Box getBox() {
-		return box;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setBox(Box box) {
-		this.box = box;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-	
-	
 
+	public BigDecimal getProfit() {
+		return profit;
+	}
+
+	public void setProfit(BigDecimal profit) {
+		this.profit = profit;
+	}
+
+	
+	
 }

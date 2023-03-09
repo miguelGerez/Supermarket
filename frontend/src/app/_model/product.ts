@@ -10,6 +10,7 @@ export class Product {
   brand!: Brand;
   salePrice!: number;
   purchasePrice!: number;
+  gain!: number;
   bard_code!: string;
   descripcion!: string;
   clasification!: Clasification;

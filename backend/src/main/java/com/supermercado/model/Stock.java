@@ -1,30 +1,30 @@
 package com.supermercado.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
-@Table
-public class Category {
+public class Stock {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
-	@Column(nullable = true, unique = true, name = "name")
 	private String name;
 	
-	
+	@OneToOne
+    @JoinColumn(name = "local_id")
+    private Local local;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -36,4 +36,14 @@ public class Category {
 		this.name = name;
 	}
 
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+
+	
+	
 }

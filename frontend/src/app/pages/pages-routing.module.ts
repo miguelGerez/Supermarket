@@ -1,3 +1,4 @@
+import { ProvidersComponent } from './providers/providers.component';
 import { TagsComponent } from './tags/etiquetas.component';
 import { PointOfSaleComponent } from './point-of-sale/point-of-sale.component';
 import { NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ import { Error404Component } from '../component/error404/error404.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { AccountsComponent } from './users/user.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { ProvidersModule } from './providers/providers.module';
 
 export const routes: Routes = [
   {
@@ -33,6 +35,11 @@ export const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent, title: 'Dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+
+  {
+    path: 'proovedores', component: ProvidersComponent, title: 'Proovedores',
+    loadChildren: () => import('./providers/providers.module').then(m => m.ProvidersModule)
   },
 
   {

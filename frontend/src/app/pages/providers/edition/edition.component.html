@@ -1,0 +1,23 @@
+
+<form novalidate [formGroup]="formGroup" (ngSubmit)="operar()" #f="ngForm">
+<mat-form-field appearance="outline" floatLabel="always">
+  <mat-label>Nombre</mat-label>
+  <input matInput formControlName="name" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" floatLabel="always">
+  <mat-label>Mail</mat-label>
+  <input matInput formControlName="mail" />
+</mat-form-field>
+
+<mat-form-field appearance="outline" floatLabel="always">
+  <mat-label>Phone</mat-label>
+  <input matInput formControlName="phone" />
+</mat-form-field>
+
+<div class="action-container">
+<button mat-raised-button color="accent">
+  Guardar
+</button>
+</div>
+</form>
