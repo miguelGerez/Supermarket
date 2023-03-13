@@ -1,6 +1,7 @@
+import { Box } from "./box";
 import { Brand } from "./brand";
 import { Category } from "./category";
-import { Clasification } from "./clasification";
+import { Classification } from "./classification";
 
 import { Provider } from "./provider";
 
@@ -13,7 +14,7 @@ export class Product {
   gain!: number;
   bard_code!: string;
   descripcion!: string;
-  clasification!: Clasification;
+  classification!: Classification;
   category!: Category;
   netContent!: string;
   modifyUptime!: string;
@@ -21,4 +22,5 @@ export class Product {
   modify_uptime!: string;
   price_uptime!: string;
   providers!: Provider[];
+  box!: Box;
 }

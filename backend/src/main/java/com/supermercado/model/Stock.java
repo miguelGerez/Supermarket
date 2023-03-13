@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Stock {
@@ -15,8 +14,6 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
@@ -24,6 +21,8 @@ public class Stock {
 	@ManyToOne
     @JoinColumn(name = "local_id")
     private Local local;
+	
+	private Integer quantity;
 
 	public Long getId() {
 		return id;
@@ -33,14 +32,6 @@ public class Stock {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Product getProduct() {
 		return product;
 	}
@@ -48,6 +39,23 @@ public class Stock {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	
 	
 	
 

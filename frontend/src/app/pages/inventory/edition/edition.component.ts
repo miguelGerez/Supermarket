@@ -1,3 +1,4 @@
+import { StockService } from './../../../_service/stock.service';
 import { Component, HostListener, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -76,7 +77,8 @@ export class InventoryEdicionComponent implements OnInit {
     private mensajeService: MensajeService,
     private compreAhora: compreAhoraService,
     private proovedorService: ProviderService,
-    private etiquetaService: TagService
+    private etiquetaService: TagService,
+    private _stockService: StockService
   ) {
     this.product = this.productService.productEdicion
   }
@@ -131,6 +133,7 @@ export class InventoryEdicionComponent implements OnInit {
       this.forLoopBody(i, 3500);
     }
 
+    this.listByProduct(this.product.id)
 
   }
 
@@ -160,7 +163,7 @@ export class InventoryEdicionComponent implements OnInit {
       purchasePrice: [this.product.purchasePrice,],
       bard_code: [this.product.bard_code],
       descripcion: [this.product.descripcion],
-      clasification: [this.product.clasification],
+      classification: [this.product.classification],
       category: [this.product.category],
       netContent: [this.product.netContent],
       quickAccess: [this.product.quickAccess],
@@ -288,6 +291,10 @@ export class InventoryEdicionComponent implements OnInit {
     this.etiquetaService.productATag(product).subscribe()
   }
 
-
+listByProduct(id: number){
+  this._stockService.listByProduct(id).subscribe(data=>{
+    console.log(data)
+  })
+}
 
 }
