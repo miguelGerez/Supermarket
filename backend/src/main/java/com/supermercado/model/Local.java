@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,12 +25,13 @@ public class Local {
 
 	private String name;
 
-	@OneToOne(mappedBy = "local")
-	private Stock stock;
+	@OneToMany(mappedBy = "local")
+    private List<Stock> stock;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "local")
 	private List<Sale> sales;
+	
 
 	public Integer getId() {
 		return id;
@@ -46,11 +49,12 @@ public class Local {
 		this.name = name;
 	}
 
-	public Stock getStock() {
+
+	public List<Stock> getStock() {
 		return stock;
 	}
 
-	public void setStock(Stock stock) {
+	public void setStock(List<Stock> stock) {
 		this.stock = stock;
 	}
 
@@ -61,5 +65,7 @@ public class Local {
 	public void setSales(List<Sale> sales) {
 		this.sales = sales;
 	}
+
+	
 
 }
